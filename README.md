@@ -15,3 +15,6 @@ Po-pup окно позволяет изменять информацию на с
 - po-pup окно;
 - JS функции;
 - модификаторы active и focus.
+
+##Github Pages
+https://github.com/FedorLeontev13/mesto/tree/gh-pages
