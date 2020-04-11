@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Путешествие по России</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <img src="images/logo.svg" alt="Логотип" class="header__logo">
+      <div class="header__line"></div>
+    </header>
+
+
+    <div class="popup" id="popup">
+      <form class="popup__container" id="container">
+        <input type="button" class="popup__btn_close" id="btnClose">
+        <p class="popup__title">Редактировать профиль</p>
+        <input type="text" class="popup__text popup__name" id="name" placeholder="Имя" value="Колин Фарелл">
+        <input type="text" class="popup__text popup__description" id="description" placeholder="Описание" value="Актер, продюсер, тренер">
+        <input type="submit" class="popup__btn_save" id="btnSave" value="Сохранить">
+      </form>
+      <div class="popup__overlay"></div>
+    </div>
+
+    <section class="profile">
+      
+      <div class="profile__info">
+        <img src="./images/avatar1.jpg" alt="Аватар" class="profile__avatar">
+        <div class="profile__info-text">
+          <input type="button" class="profile__btn_edit" id="btnEdit">
+          <h3 class="profile__title">Колин Фарелл</h3>
+          <p class="profile__subtitle">Актер, продюсер, тренер</p> 
+        </div>
+      </div>
+        <input type="button" class="profile__btn_add" id="btnAdd"> 
+    </section>
+    <section class="elements">
+      <div class="element">
+        <img src="./images/item1.jpg" alt="Камчатка" class="elements__item">
+        <p class="elements__title">Камчатка</p>
+        <input type="button" class="element__btn_like">
+      </div>
+      <div class="element">
+        <img src="./images/item2.jpg" alt="Москва" class="elements__item">
+        <p class="elements__title">Москва</p>
+        <input type="button" class="element__btn_like">
+      </div>
+      <div class="element">
+        <img src="./images/item3.jpg" alt="Владивосток" class="elements__item">
+        <p class="elements__title">Владивосток</p>
+        <input type="button" class="element__btn_like">
+      </div>
+      <div class="element">
+        <img src="./images/item4.jpg" alt="Тюмень" class="elements__item">
+        <p class="elements__title">Тюмень</p>
+        <input type="button" class="element__btn_like">
+      </div>
+      <div class="element">
+        <img src="./images/item5.jpg" alt="Новосибирск" class="elements__item">
+        <p class="elements__title">Новосибирск</p>
+        <input type="button" class="element__btn_like">
+      </div>
+      <div class="element">
+        <img src="./images/item6.jpeg" alt="Дагестан" class="elements__item">
+        <p class="elements__title">Дагестан</p>
+        <input type="button" class="element__btn_like">
+      </div>
+    </section>
+    <footer class="footer">
+      <p class="footer__copyright">&copy; 2020 Mesto Russia, created by Leontev Fedor</p>
+    </footer>
+     
+    
+
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>  

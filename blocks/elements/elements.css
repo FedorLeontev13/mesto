@@ -1,0 +1,26 @@
+@import url("./__item/elements__item.css");
+@import url("./__title/elements__title.css");
+
+.elements {
+    display: grid;
+    grid-template-columns: repeat(3, 282px);
+    grid-template-rows: repeat(2, 361px);
+    grid-row-gap: 21px;
+    grid-column-gap: 18px;
+}
+
+@media (max-width : 768px) {
+    .elements {
+        display: grid;
+        grid-template-columns: repeat(2, 300px);
+        grid-template-rows: repeat(3, 361px);
+        grid-column-gap: 25px;
+    }
+}
+
+@media (max-width : 320px) {
+    .elements {
+        grid-template-columns: repeat(1, 282px);
+        grid-template-rows: repeat(6, 361px);
+    }
+}

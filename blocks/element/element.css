@@ -1,0 +1,9 @@
+@import url("./__btn/_like/element__btn_like.css");
+
+.element {
+    position: relative;
+    background-color: white;
+    border-radius: 10px;
+    z-index: 1;
+}
+

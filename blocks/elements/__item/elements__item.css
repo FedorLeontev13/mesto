@@ -1,0 +1,19 @@
+.elements__item {
+    width: 282px;
+    height: 282px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    z-index: 2;
+}
+
+@media (max-width : 768px) {
+    .elements__item {
+        width: 300px;
+    }
+}
+
+@media (max-width : 320px) {
+    .elements__item {
+        width: 282px;
+    }
+}

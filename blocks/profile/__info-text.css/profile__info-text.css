@@ -1,0 +1,14 @@
+.profile__info-text {
+    position: relative;
+    width: 336px;
+}
+
+@media (max-width : 320px) {
+    .profile__info-text {
+        width: 280px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 36px;
+    }
+}
