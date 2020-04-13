@@ -1,4 +1,4 @@
-.popup__btn_close {
+.popup_btn_close {
     background-image: url("../../../../images/close2.svg");
     background-size: cover;
     background-color: black;
@@ -12,11 +12,7 @@
     border: 0;
 }
 
-.popup__btn_close:hover {
+.popup_btn_close:hover {
     opacity: .5;
     transition: opacity .3s;
-}
-
-.popup__btn_close:focus {
-    outline: none;
 }

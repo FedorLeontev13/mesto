@@ -9,11 +9,18 @@
     padding: 0;
 }
 
+@media (max-width : 768px) {
+    .profile__subtitle {
+        margin-left: -80px;
+    }
+}
+
 @media (max-width : 320px) {
     .profile__subtitle {
         max-width: 280px;
         font-size: 14px;
         line-height: 17px;
         text-align: center;
+        margin: auto;
     }
 }

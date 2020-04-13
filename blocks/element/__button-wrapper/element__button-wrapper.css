@@ -1,0 +1,12 @@
+.element__button-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 246px;
+    height: 23px;
+    margin-left: 21px;
+    margin-bottom: 31px;
+    justify-self: center;
+    align-items: center;
+}

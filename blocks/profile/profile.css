@@ -3,8 +3,9 @@
 @import url("./__info-text.css/profile__info-text.css");
 @import url("./__title/profile__title.css");
 @import url("./__subtitle/profile__subtitle.css");
-@import url("./__btn/_edit/profile__btn_edit.css");
-@import url("./__btn/_add/profile__btn_add.css");
+@import url("./_btn/_add/profile_btn_add.css");
+@import url("./_btn/_edit/profile_btn_edit.css");
+@import url("./__button-wrapper/profile__button-wrapper.css");
 
 .profile {
     width: 882px;
@@ -14,9 +15,16 @@
     justify-content: space-between;
 }
 
+@media (max-width :1024px) {
+    .profile {
+        width: 800px;
+    }
+}
+
 @media (max-width : 768px) {
     .profile {
-        width: 720px;
+        width: 680px;
+        flex-direction: column;
     }
 }
 
@@ -25,6 +33,8 @@
         width: 282px;
         flex-direction: column;
         margin: 0 auto 36px;
-        justify-content: space-between;
+        align-items: center;
+        justify-content: center;
     }
 }
+

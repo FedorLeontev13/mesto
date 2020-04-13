@@ -1,21 +1,30 @@
 @import url("./__logo/header__logo.css");
-@import url("./__line/header__line.css");
 
 .header {
     width: 882px;
     margin: 45px auto 40px;
+    border-bottom: 1px solid rgba(33, 33, 33, .7);
+    padding-bottom: 40px;
+}
+
+@media (max-width : 1024px) {
+    .header {
+        width: 850px;
+        padding-bottom: 30px;
+    }
 }
 
 @media (max-width : 768px) {
     .header {
-        width: 700px;
-        margin: 45px auto 40px;
+        width: 640px;
+        padding-bottom: 30px;
     }
 }
 
 @media (max-width : 320px) {
     .header {
-        width: 320px;
+        width: 310px;
         margin: 28px auto 30px;
+        padding-bottom: 30px;
     }
 }

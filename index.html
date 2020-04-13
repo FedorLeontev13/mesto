@@ -13,68 +13,82 @@
       <img src="images/logo.svg" alt="Логотип" class="header__logo">
       <div class="header__line"></div>
     </header>
-
-
-    <div class="popup" id="popup">
-      <form class="popup__container" id="container">
-        <input type="button" class="popup__btn_close" id="btnClose">
-        <p class="popup__title">Редактировать профиль</p>
-        <input type="text" class="popup__text popup__name" id="name" placeholder="Имя" value="Колин Фарелл">
-        <input type="text" class="popup__text popup__description" id="description" placeholder="Описание" value="Актер, продюсер, тренер">
-        <input type="submit" class="popup__btn_save" id="btnSave" value="Сохранить">
-      </form>
-      <div class="popup__overlay"></div>
-    </div>
-
-    <section class="profile">
+    <section class="main">
+      <section class="profile">
       
-      <div class="profile__info">
-        <img src="./images/avatar1.jpg" alt="Аватар" class="profile__avatar">
-        <div class="profile__info-text">
-          <input type="button" class="profile__btn_edit" id="btnEdit">
-          <h3 class="profile__title">Колин Фарелл</h3>
-          <p class="profile__subtitle">Актер, продюсер, тренер</p> 
+        <div class="profile__info">
+          <img src="./images/avatar1.jpg" alt="Аватар" class="profile__avatar">
+          <div class="profile__info-text">
+            <div class="profile__button-wrapper">
+              <h3 class="profile__title">Колин Фарел</h3>
+              <button class="profile_btn_edit" id="btnEdit"></button>
+            </div>
+            <p class="profile__subtitle">Актер, продюсер, тренер</p> 
+          </div>
         </div>
-      </div>
-        <input type="button" class="profile__btn_add" id="btnAdd"> 
+          <button class="profile_btn_add" id="btnAdd"></button>
+      </section>
+      <section class="elements">
+        <div class="element">
+          <img src="./images/item1.jpg" alt="Камчатка" class="element__image">
+          <div class="element__button-wrapper">
+            <p class="element__title">Камчатка</p>
+            <button class="element__btn_like"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img src="./images/item2.jpg" alt="Москва" class="element__image">
+          <div class="element__button-wrapper">
+            <p class="element__title">Москва</p>
+            <button class="element__btn_like"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img src="./images/item3.jpg" alt="Владивосток" class="element__image">
+          <div class="element__button-wrapper">
+            <p class="element__title">Владивосток</p>
+            <button class="element__btn_like"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img src="./images/item4.jpg" alt="Тюмень" class="element__image">
+          <div class="element__button-wrapper">
+            <p class="element__title">Тюмень</p>
+            <button class="element__btn_like"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img src="./images/item5.jpg" alt="Новосибирск" class="element__image">
+          <div class="element__button-wrapper">
+            <p class="element__title">Новосибирск</p>
+            <buttont class="element__btn_like"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img src="./images/item6.jpeg" alt="Дагестан" class="element__image">
+          <div class="element__button-wrapper">
+            <p class="element__title">Дагестан</p>
+            <button class="element__btn_like"></button>
+          </div>
+        </div>
+      </section>
     </section>
-    <section class="elements">
-      <div class="element">
-        <img src="./images/item1.jpg" alt="Камчатка" class="elements__item">
-        <p class="elements__title">Камчатка</p>
-        <input type="button" class="element__btn_like">
-      </div>
-      <div class="element">
-        <img src="./images/item2.jpg" alt="Москва" class="elements__item">
-        <p class="elements__title">Москва</p>
-        <input type="button" class="element__btn_like">
-      </div>
-      <div class="element">
-        <img src="./images/item3.jpg" alt="Владивосток" class="elements__item">
-        <p class="elements__title">Владивосток</p>
-        <input type="button" class="element__btn_like">
-      </div>
-      <div class="element">
-        <img src="./images/item4.jpg" alt="Тюмень" class="elements__item">
-        <p class="elements__title">Тюмень</p>
-        <input type="button" class="element__btn_like">
-      </div>
-      <div class="element">
-        <img src="./images/item5.jpg" alt="Новосибирск" class="elements__item">
-        <p class="elements__title">Новосибирск</p>
-        <input type="button" class="element__btn_like">
-      </div>
-      <div class="element">
-        <img src="./images/item6.jpeg" alt="Дагестан" class="elements__item">
-        <p class="elements__title">Дагестан</p>
-        <input type="button" class="element__btn_like">
-      </div>
-    </section>
+    
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia, created by Leontev Fedor</p>
     </footer>
      
-    
+    <div class="popup" id="popup">
+      <form class="popup__container" id="container">
+        <button class="popup_btn_close" id="btnClose"></button>
+        <p class="popup__title">Редактировать профиль</p>
+        <div class="popup__text-zone">
+          <input type="text" class="popup__text popup__text_name" id="name" placeholder="Имя" value="Колин Фарел">
+          <input type="text" class="popup__text popup__text_description" id="description" placeholder="Описание" value="Актер, продюсер, тренер">
+        </div>
+        <button type="submit" class="popup_btn_save" id="btnSave">Сохранить</button>
+      </form>
+    </div>
 
   </div>
   <script src="script.js"></script>

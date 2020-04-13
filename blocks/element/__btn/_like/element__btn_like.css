@@ -1,7 +1,4 @@
 .element__btn_like {
-    position: absolute;
-    right: 22px;
-    bottom: 30px;
     height: 19px;
     width: 21px;
     background-image: url("../../../../images/like1.svg");

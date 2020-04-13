@@ -1,17 +1,15 @@
-.popup__btn_save {
+.popup_btn_save {
     width: 358px;
     height: 51px;
     background-color: black;
-    background: black;
     color: white;
     border: none;
-    position: absolute;
-    bottom: 37px;
-    left: 36px;
+    margin-top: 18px;
     border-radius: 3px;
+    margin-bottom: 38px;
 }
 
-.popup__btn_save:hover {
+.popup_btn_save:hover {
     opacity: .5;
     transition: opacity .3s;
 }

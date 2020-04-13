@@ -1,18 +1,24 @@
+const btnClose = document.getElementById('btnClose')
+const btnEdit = document.getElementById('btnEdit')
+
 let popup = document.querySelector('.popup')
 let container = document.querySelector('.popup__container')
-let btnEdit = document.getElementById('btnEdit')
-let btnClose = document.getElementById('btnClose')
-let btnSave = document.querySelector('.popup__btn_save')
+let btnSave = document.querySelector('.popup_btn_save')
+let nameInput = document.querySelector('.popup__text_name')
+let jobInput = document.querySelector('.popup__text_description')
+let nameForm = document.querySelector('.profile__title')
+let jobForm = document.querySelector('.profile__subtitle')
 
-function edit() {
-  popup.style.display = "block"
+
+function open() {
+  popup.classList.toggle('popup_opened')
 }
 
 function close() {
-  popup.style.display = "none"
+  popup.classList.toggle('popup_opened', false)
 }
 
-btnEdit.addEventListener('click', edit)
+btnEdit.addEventListener('click', open)
 btnClose.addEventListener('click', close)
 
 
@@ -20,14 +26,8 @@ btnClose.addEventListener('click', close)
 function formSubmitHandler (evt) {
     evt.preventDefault()
 
-    let nameInput = document.querySelector('.popup__name')
-    let jobInput = document.querySelector('.popup__description')
-
     nameInput = nameInput.value
     jobInput = jobInput.value
-
-    let nameForm = document.querySelector('.profile__title')
-    let jobForm = document.querySelector('.profile__subtitle')
 
     nameForm.textContent = nameInput
     jobForm.textContent = jobInput
@@ -36,7 +36,8 @@ function formSubmitHandler (evt) {
 container.addEventListener('submit', formSubmitHandler);
 
 function save() {
-  popup.style.display = "none"
+  popup.classList.toggle('popup_opened', false)
 }
 
 btnSave.addEventListener('click', save)
+
