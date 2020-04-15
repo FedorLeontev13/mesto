@@ -21,6 +21,14 @@
     }
 }
 
+@media (max-width : 375px) {
+    .header {
+        width: 335px;
+        margin: 28px auto 30px;
+        padding-bottom: 30px;
+    }
+}
+
 @media (max-width : 320px) {
     .header {
         width: 310px;

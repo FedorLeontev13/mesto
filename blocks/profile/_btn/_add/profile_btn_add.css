@@ -2,7 +2,7 @@
     width: 150px;
     height: 50px;
     background: black;
-    background-image: url("../../../../images/add.png");
+    background-image: url("../../../../images/add.svg");
     border: 1px solid white;
     align-self: center;
     justify-self: center;
@@ -18,15 +18,17 @@
 @media (max-width : 768px) {
   .profile_btn_add {
     width: 400px;
-    background-image: url("../../../../images/add.png");
-    height: 50px;
+  }
+}
+
+@media (max-width : 375px) {
+  .profile_btn_add {
+    width: 320px;
   }
 }
 
 @media (max-width : 320px) {
   .profile_btn_add {
     width: 282px;
-    background-image: url("../../../../images/add.png");
-    height: 50px;
   }
 }

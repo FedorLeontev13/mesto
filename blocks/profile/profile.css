@@ -28,6 +28,16 @@
     }
 }
 
+@media (max-width : 375px) {
+    .profile {
+        width: 320px;
+        flex-direction: column;
+        margin: 0 auto 36px;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
 @media (max-width : 320px) {
     .profile {
         width: 282px;

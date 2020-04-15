@@ -10,3 +10,23 @@
     margin-top: 34px;
     padding: 0;
 }
+
+@media (max-width : 375px) {
+    .popup__title {
+        max-width: 300px;
+        font-size: 20px;
+        line-height: 24px;
+        margin-left: 18px;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width : 320px) {
+    .popup__title {
+        max-width: 250px;
+        font-size: 16px;
+        line-height: 20px;
+        margin-left: 18px;
+        margin-top: 0px;
+    }
+}

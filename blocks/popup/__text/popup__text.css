@@ -14,3 +14,22 @@
 .popup__text:focus {
     outline: 0;
 }
+
+@media (max-width : 375px) {
+    .popup__text {
+        width: 280px;
+        margin-left: 15px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        line-height: 15px;
+        padding-bottom: 10px;
+    }
+}
+
+@media (max-width : 320px) {
+    .popup__text {
+        max-width: 200px;
+        font-size: 14px;
+        line-height: 17px;
+    }
+}

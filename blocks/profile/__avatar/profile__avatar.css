@@ -9,7 +9,13 @@
     .profile__avatar {
         margin-left: 0;
     }
-  }
+}
+
+@media (max-width : 375px) {
+    .profile__avatar {
+        margin: 0 0 14px;
+    }
+}
 
 @media (max-width : 320px) {
     .profile__avatar {
