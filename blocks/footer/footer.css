@@ -6,8 +6,28 @@
     margin-bottom: 60px;
 }
 
+@media (max-width : 640px) {
+    .footer {
+        width: 300px;
+        margin-top: 48px;
+        margin-bottom: 36px;
+        margin-left: 30px;
+        align-self: flex-start;
+    }
+}
 
-@media (max-width : 375px) {
+
+@media (max-width : 550px) {
+    .footer {
+        width: 330px;
+        margin-top: 48px;
+        margin-bottom: 36px;
+        margin-left: 30px;
+        align-self: flex-start;
+    }
+}
+
+@media (max-width : 390px) {
     .footer {
         width: 280px;
         margin-top: 48px;
@@ -17,7 +37,7 @@
     }
 }
 
-@media (max-width : 320px) {
+@media (max-width : 340px) {
     .footer {
         width: 200px;
         margin-top: 48px;

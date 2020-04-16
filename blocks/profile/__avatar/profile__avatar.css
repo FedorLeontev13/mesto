@@ -5,19 +5,31 @@
     margin-right: 30px;
 }
 
-@media (max-width : 768px) {
+@media (max-width : 890px) {
     .profile__avatar {
         margin-left: 0;
     }
 }
 
-@media (max-width : 375px) {
+@media (max-width : 650px) {
     .profile__avatar {
         margin: 0 0 14px;
     }
 }
 
-@media (max-width : 320px) {
+@media (max-width : 550px) {
+    .profile__avatar {
+        margin: 0 0 14px;
+    }
+}
+
+@media (max-width : 400px) {
+    .profile__avatar {
+        margin: 0 0 14px;
+    }
+}
+
+@media (max-width : 340px) {
     .profile__avatar {
         margin: 0 0 14px;
     }

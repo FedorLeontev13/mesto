@@ -11,14 +11,30 @@
     align-items: center;
 }
 
-@media (max-width : 375px) {
+@media (max-width : 700px) {
     .element__button-wrapper {
         margin-top: 25px;
+        width: 246px;
     }
 }
 
-@media (max-width : 320px) {
+@media (max-width : 550px) {
     .element__button-wrapper {
         margin-top: 25px;
+        width: 280px;
+    }
+}
+
+@media (max-width : 390px) {
+    .element__button-wrapper {
+        margin-top: 25px;
+        width: 246px;
+    }
+}
+
+@media (max-width : 340px) {
+    .element__button-wrapper {
+        margin-top: 25px;
+        width: 246px;
     }
 }

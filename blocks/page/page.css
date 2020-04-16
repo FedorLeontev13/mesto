@@ -18,21 +18,32 @@
     z-index: 0;
 }
 
-@media (max-width : 768px) {
+@media (max-width : 890px) {
     .page {
         align-items: flex-end;
     }
 }
 
+@media (max-width : 640px) {
+    .page {
+        align-items: center;
+        }
+}
 
-@media (max-width : 375px) {
+@media (max-width : 550px) {
+    .page {
+        align-items: center;
+        }
+}
+
+@media (max-width : 390px) {
     .page {
         align-items: center;
         }
 }
 
 
-@media (max-width : 320px) {
+@media (max-width : 340px) {
     .page {
     align-items: center;
     }

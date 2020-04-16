@@ -3,7 +3,14 @@
     height: 33px;
 }
 
-@media (max-width : 375px) {
+@media (max-width : 700px) {
+    .header__logo {
+        margin-left: 24px;
+    }
+}
+
+
+@media (max-width : 390px) {
     .header__logo {
         width: 120px;
         height: 25px;
@@ -11,7 +18,7 @@
     }
 }
 
-@media (max-width : 320px) {
+@media (max-width : 340px) {
     .header__logo {
         width: 104px;
         height: 25px;

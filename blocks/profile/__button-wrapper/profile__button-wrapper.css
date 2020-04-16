@@ -7,13 +7,13 @@
     margin: 0;
 }
 
-@media (max-width : 375px) {
+@media (max-width : 550px) {
     .profile__button-wrapper {
         width: 320px;
     }
 }
 
-@media (max-width : 320px) {
+@media (max-width : 340px) {
     .profile__button-wrapper {
         width: 280px;
     }

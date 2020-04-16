@@ -6,13 +6,31 @@
     z-index: 2;
 }
 
-@media (max-width : 768px) {
+@media (max-width : 890px) {
     .element__image {
         width: 300px;
     }
 }
 
-@media (max-width : 320px) {
+@media (max-width : 700px) {
+    .element__image {
+        width: 300px;
+    }
+}
+
+@media (max-width : 550px) {
+    .element__image {
+        width: 330px;
+    }
+}
+
+@media (max-width : 390px) {
+    .element__image {
+        width: 300px;
+    }
+}
+
+@media (max-width : 340px) {
     .element__image {
         width: 282px;
     }

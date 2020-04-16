@@ -3,7 +3,7 @@
     flex-direction: row;
 }
 
-@media (max-width : 375px) {
+@media (max-width : 700px) {
     .profile__info {
         display: flex;
         flex-direction: column;
@@ -13,7 +13,27 @@
     }
 }
 
-@media (max-width : 320px) {
+@media (max-width : 550px) {
+    .profile__info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width : 390px) {
+    .profile__info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width : 340px) {
     .profile__info {
         display: flex;
         flex-direction: column;

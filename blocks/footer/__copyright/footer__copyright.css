@@ -9,7 +9,7 @@
     padding: 0;
 }
 
-@media (max-width : 320px) {
+@media (max-width : 340px) {
     .footer__copyright {
         max-width: 300px;
         font-size: 14px;
