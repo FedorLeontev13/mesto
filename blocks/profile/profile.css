@@ -28,9 +28,16 @@
     }
 }
 
-@media (max-width : 640px) {
+@media (max-width : 780px) {
     .profile {
-        width: 550px;
+        width: 650px;
+        flex-direction: column;
+    }
+}
+
+@media (max-width : 700px) {
+    .profile {
+        width: 540px;
         flex-direction: column;
         margin: 0 auto 36px;
         align-items: center;
@@ -40,7 +47,7 @@
 
 @media (max-width :550px) {
     .profile {
-        width: 395px;
+        width: 385px;
         flex-direction: column;
         margin: 0 auto 36px;
         align-items: center;

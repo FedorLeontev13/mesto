@@ -14,7 +14,7 @@
     transition: opacity .3s;
 }
 
-@media (max-width : 375px) {
+@media (max-width : 550px) {
     .popup__btn-save {
         width: 290px;
         margin-top: 0;
@@ -22,7 +22,7 @@
     }
 }
 
-@media (max-width : 320px) {
+@media (max-width : 340px) {
     .popup__btn-save {
         width: 240px;
         margin-top: 10px;

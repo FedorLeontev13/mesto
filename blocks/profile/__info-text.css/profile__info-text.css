@@ -14,9 +14,20 @@
     }
 }
 
-@media (max-width : 640px) {
+@media (max-width : 780px) {
     .profile__info-text {
         width: 550px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 36px;
+    }
+}
+
+@media (max-width : 640px) {
+    .profile__info-text {
+        width: 540px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -26,11 +37,11 @@
 
 @media (max-width : 550px) {
     .profile__info-text {
-        width: 390px;
+        width: 380px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-bottom: 36px;
+        margin: 0 auto 36px;
     }
 }
 

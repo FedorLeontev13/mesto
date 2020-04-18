@@ -20,7 +20,7 @@
 
 @media (max-width : 550px) {
     .profile__btn-edit {
-        margin-right: auto;
+        margin-left: 0;
     }
 }
 

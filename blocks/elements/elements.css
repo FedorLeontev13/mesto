@@ -16,6 +16,15 @@
     }
 }
 
+@media (max-width : 780px) {
+    .elements {
+        margin: 0 auto 0;
+        grid-template-columns: repeat(2, 300px);
+        grid-template-rows: repeat(3, 361px);
+        grid-column-gap: 25px;
+    }
+}
+
 @media (max-width : 640px) {
     .elements {
         justify-content: center;

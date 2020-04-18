@@ -11,6 +11,12 @@
     }
 }
 
+@media (max-width : 800px) {
+    .profile__avatar {
+        margin: 0 auto;
+    }
+}
+
 @media (max-width : 650px) {
     .profile__avatar {
         margin: 0 0 14px;
