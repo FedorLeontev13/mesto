@@ -20,12 +20,14 @@
         margin-left: -70px;
         
     }
+}
 
 @media (max-width : 700px) {
     .profile__subtitle {
         margin: 0 auto;
             
     }
+}
 
 @media (max-width : 550px) {
     .profile__subtitle {
@@ -35,6 +37,7 @@
         text-align: center;
         margin: 0 auto;
     }
+}
 
 @media (max-width : 390px) {
     .profile__subtitle {
@@ -44,7 +47,7 @@
         text-align: center;
         margin: 0 auto 0;
     }
-
+}
 
 @media (max-width : 340px) {
     .profile__subtitle {

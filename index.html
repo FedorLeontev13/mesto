@@ -12,16 +12,16 @@
     <header class="header">
       <img src="images/logo.svg" alt="Логотип" class="header__logo">
     </header>
-    <section class="main">
+    <main class="main">
       <section class="profile">
         <div class="profile__info">
           <img src="./images/avatar1.jpg" alt="Аватар" class="profile__avatar">
           <div class="profile__info-text">
             <div class="profile__button-wrapper">
-              <h3 class="profile__title">Колин Фарел</h3>
+              <h3 class="profile__title" id="profileName">Колин Фарел</h3>
               <button type="button" class="profile__btn-edit" id="btnEdit"></button>
             </div>
-            <p class="profile__subtitle">Актер, продюсер, тренер</p> 
+            <p class="profile__subtitle" id="profileDescription">Актер, продюсер, тренер</p> 
           </div>
         </div>
         <button type="button" class="profile__btn-add" id="btnAdd"></button>
@@ -70,7 +70,7 @@
           </div>
         </div>
       </section>
-    </section>
+    </main>
     
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia, created by Leontev Fedor</p>
@@ -81,8 +81,8 @@
         <button type="button" class="popup__btn-close" id="btnClose"></button>
         <p class="popup__title">Редактировать профиль</p>
         <div class="popup__text-zone">
-          <input type="text" class="popup__text popup__text_name" id="name" placeholder="Имя" value="Колин Фарел">
-          <input type="text" class="popup__text popup__text_description" id="description" placeholder="Описание" value="Актер, продюсер, тренер">
+          <input type="text" class="popup__text popup__text_name" id="name" placeholder="Имя">
+          <input type="text" class="popup__text popup__text_description" id="description" placeholder="Описание" >
         </div>
         <button type="submit" class="popup__btn-save" id="btnSave">Сохранить</button>
       </form>
