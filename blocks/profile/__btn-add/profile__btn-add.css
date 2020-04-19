@@ -8,6 +8,7 @@
     justify-self: center;
     background-position: center;
     background-repeat: no-repeat;
+    cursor: pointer;
 }
  
 .profile__btn-add:hover {

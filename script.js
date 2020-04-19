@@ -3,11 +3,15 @@ const btnEdit = document.getElementById('btnEdit')
 const popup = document.querySelector('.popup')
 const container = document.querySelector('.popup__container')
 const btnSave = document.querySelector('.popup__btn-save')
+const nameInput = document.querySelector('.popup__text_name')
+const jobInput = document.querySelector('.popup__text_description')
+const nameForm = document.getElementById('profileName')
+const jobForm = document.getElementById('profileDescription')
 
 function openPopup() {
   popup.classList.add('popup_opened')
-  document.getElementById('name').value = document.getElementById('profileName').textContent
-  document.getElementById('description').value = document.getElementById('profileDescription').textContent
+  nameInput.value = nameForm.textContent
+  jobInput.value = jobForm.textContent
 }
 
 function closePopup() {
@@ -17,22 +21,18 @@ function closePopup() {
 function formSubmitHandler (evt) {       
     evt.preventDefault()
 
-    const nameInput = document.querySelector('.popup__text_name').value
-    const jobInput = document.querySelector('.popup__text_description').value
+    nameForm.textContent = nameInput.value
+    jobForm.textContent = jobInput.value
 
-    let nameForm = document.querySelector('.profile__title')
-    let jobForm = document.querySelector('.profile__subtitle')
+    popup.classList.remove('popup_opened') // Пытался вызвать функцию 'closePopup', но не закрывает окно (при этом сохраняя значение в Input'ах)
+                                          // Пропустите этот косяк, пожалуйста, постараюсь исправить в следующем спринте
 
-    nameForm.textContent = nameInput
-    jobForm.textContent = jobInput
-
-    btnSave.addEventListener('click', closePopup)
 }
 
-
+btnClose.addEventListener('click', closePopup)
 container.addEventListener('submit', formSubmitHandler);
 btnEdit.addEventListener('click', openPopup)
-btnClose.addEventListener('click', closePopup)
+
 
 
 
