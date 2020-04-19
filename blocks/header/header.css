@@ -16,7 +16,7 @@
     }
 } 
 
-@media (max-width : 390px) {
+@media (max-width : 400px) {
     .header {
         margin: 28px auto 30px;
         padding-bottom: 30px;
