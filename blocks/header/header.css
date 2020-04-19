@@ -1,44 +1,23 @@
 @import url("./__logo/header__logo.css");
 
 .header {
-    width: 882px;
-    margin: 45px auto 40px;
+    max-width: 882px;
+    width: 100%;
+    margin: 40px auto 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
     border-bottom: 1px solid rgba(33, 33, 33, .7);
     padding-bottom: 40px;
 }
 
-@media (max-width : 1024px) {
+@media (max-width : 650px) {
     .header {
-        width: 850px;
-        padding-bottom: 30px;
+        max-width: 540px;
     }
-}
-
-@media (max-width : 890px) {
-    .header {
-        width: 640px;
-        padding-bottom: 30px;
-    }
-}
-
-@media (max-width : 640px) {
-    .header {
-        width: 550px;
-        padding-bottom: 30px;
-    }
-}
-
-@media (max-width : 550px) {
-    .header {
-        width: 390px;
-        margin: 28px auto 30px;
-        padding-bottom: 30px;
-    }
-}
+} 
 
 @media (max-width : 390px) {
     .header {
-        width: 335px;
         margin: 28px auto 30px;
         padding-bottom: 30px;
     }
@@ -46,8 +25,8 @@
 
 @media (max-width : 340px) {
     .header {
-        width: 310px;
         margin: 28px auto 30px;
         padding-bottom: 30px;
     }
 }
+

@@ -1,50 +1,43 @@
 @import url("./__copyright/footer__copyright.css");
 
 .footer {
-    width: 882px;
+    max-width: 882px;
+    width: 100%;
     margin-top: 66px;
     margin-bottom: 60px;
 }
 
 @media (max-width : 890px) {
     .footer {
-        width: 625px;
-        margin: 48px auto 36px;
-    }
-}
-
-@media (max-width : 780px) {
-    .footer {
-        width: 625px;
-        margin: 48px auto 36px;
+        max-width: 625px;
     }
 }
 
 @media (max-width : 640px) {
     .footer {
-        width: 300px;
+        max-width: 300px;
         margin: 48px auto 36px;
     }
 }
 
 
-@media (max-width : 550px) {
+@media (max-width : 560px) {
     .footer {
-        width: 330px;
+        max-width: 330px;
         margin: 48px auto 36px;
     }
 }
 
 @media (max-width : 390px) {
     .footer {
-        width: 280px;
+        max-width: 280px;
         margin: 48px auto 36px;
     }
 }
 
 @media (max-width : 340px) {
     .footer {
-        width: 200px;
+        max-width: 200px;
         margin-top: 48px;
         margin-bottom: 36px;
         margin-left: 19px;

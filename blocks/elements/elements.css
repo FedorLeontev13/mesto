@@ -7,7 +7,7 @@
     grid-column-gap: 18px;
 }
 
-@media (max-width : 890px) {
+@media (max-width : 900px) {
     .elements {
         margin: 0 auto 0;
         grid-template-columns: repeat(2, 300px);
@@ -33,7 +33,7 @@
     }
 }
 
-@media (max-width : 550px) {
+@media (max-width : 560px) {
     .elements {
         justify-content: center;
         grid-template-columns: repeat(1, 330px);

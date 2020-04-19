@@ -6,7 +6,7 @@
     z-index: 2;
 }
 
-@media (max-width : 890px) {
+@media (max-width : 900px) {
     .element__image {
         width: 300px;
     }
@@ -18,7 +18,7 @@
     }
 }
 
-@media (max-width : 550px) {
+@media (max-width : 560px) {
     .element__image {
         width: 330px;
     }
