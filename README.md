@@ -17,4 +17,4 @@ Po-pup окно позволяет изменять информацию на с
 - модификаторы active и focus.
 
 ##Github Pages
-
+ttps://fedorleontev13.github.io/mesto/index.html
