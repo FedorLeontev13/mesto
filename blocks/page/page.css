@@ -1,8 +1,6 @@
 .page {
     width: 100%;
     max-width: 100%;
-    min-width: 1024px;
-    margin: 0 auto;
     padding: 0;
     background: black;
     font-family: 'Inter', Arial, sans-serif;
@@ -19,50 +17,8 @@
     z-index: 0;
 }
 
-@media (max-width : 890px) {
-    .page {
-        align-items: center;
-        margin: 0 auto 0;
-        min-width: 780px;
-    }
-}
-
-@media (max-width : 780px) {
-    .page {
-        align-items: center;
-        margin: 0 auto 0;
-        min-width: 640px;
-    }
-}
-
-@media (max-width : 640px) {
-    .page {
-        align-items: center;
-        margin: 0 auto 0;
-        min-width: 550px;
-        }
-}
-
-@media (max-width : 550px) {
-    .page {
-        align-items: center;
-        margin: 0 auto 0;
-        min-width: 390px;
-        }
-}
-
-@media (max-width : 390px) {
-    .page {
-        align-items: center;
-        margin: 0 auto 0;
-        min-width: 340px;
-        }
-}
-
-
 @media (max-width : 340px) {
     .page {
-    align-items: center;
     margin: 0 auto 0;
     }
 }
