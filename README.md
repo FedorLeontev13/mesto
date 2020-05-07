@@ -20,4 +20,4 @@ Po-pup окно 'Image' позволяет увеличить размеры к�
 - модификаторы active и focus.
 
 ##Github Pages
-https://fedorleontev13.github.io/mesto/index.html
+https://fedorleontev13.github.io/mesto
