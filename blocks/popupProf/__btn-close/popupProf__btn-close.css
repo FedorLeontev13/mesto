@@ -1,4 +1,4 @@
-.popup__btn-close {
+.popupProf__btn-close {
     background-image: url("../../../images/close.svg");
     background-size: cover;
     background-color: transparent;
@@ -13,7 +13,7 @@
     cursor: pointer;
 }
 
-.popup__btn-close:hover {
+.popupProf__btn-close:hover {
     opacity: .5;
     transition: opacity .3s;
 }

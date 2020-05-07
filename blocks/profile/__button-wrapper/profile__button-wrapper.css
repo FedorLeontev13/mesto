@@ -7,27 +7,8 @@
     margin: 0;
 }
 
-@media (max-width : 780px) {
-    .profile__button-wrapper {
-        margin: 0 0 auto 0;
 
-    }
-}
-
-@media (max-width : 640px) {
-    .profile__button-wrapper {
-        margin: 0 auto;
-    }
-}
-
-@media (max-width : 550px) {
-    .profile__button-wrapper {
-        width: 320px;
-        margin: 0 auto;
-    }
-}
-
-@media (max-width : 340px) {
+@media (max-width : 1000px) {
     .profile__button-wrapper {
         width: 280px;
     }

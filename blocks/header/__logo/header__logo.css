@@ -1,30 +1,11 @@
 .header__logo {
     width: 142px;
     height: 33px;
-}
-
-@media (max-width : 900px) {
-    .header {
-        margin-left: 40px;
-    }
-}
-
-@media (max-width : 700px) {
-    .header__logo {
-        margin-left: 40px;
-    }
+    margin-left: 20px;
 }
 
 
-@media (max-width : 390px) {
-    .header__logo {
-        width: 120px;
-        height: 25px;
-        margin-left: 30px;
-    }
-}
-
-@media (max-width : 340px) {
+@media (max-width : 620px) {
     .header__logo {
         width: 104px;
         height: 25px;

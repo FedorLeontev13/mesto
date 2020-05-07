@@ -16,31 +16,13 @@
     transition: opacity .3s;
 }
 
-@media (max-width : 890px) {
-  .profile__btn-add {
-    width: 400px;
-  }
-}
-
-@media (max-width : 640px) {
-  .profile__btn-add {
-    width: 400px;
-  }
-}
-
-@media (max-width : 550px) {
-  .profile__btn-add {
-    width: 350px;
-  }
-}
-
-@media (max-width : 400px) {
+@media (max-width : 1000px) {
   .profile__btn-add {
     width: 320px;
   }
 }
 
-@media (max-width : 340px) {
+@media (max-width : 620px) {
   .profile__btn-add {
     width: 282px;
   }

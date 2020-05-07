@@ -1,0 +1,35 @@
+.popupCard__text {
+    width: 358px;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    margin-bottom: 30px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    padding-bottom: 15px;
+    box-shadow: none;
+}
+
+.popupCard__text:focus {
+    outline: 0;
+}
+
+@media (max-width : 550px) {
+    .popupCard__text {
+        width: 280px;
+        margin-left: 15px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        line-height: 15px;
+        padding-bottom: 10px;
+    }
+}
+
+@media (max-width : 340px) {
+    .popupCard__text {
+        max-width: 200px;
+        font-size: 14px;
+        line-height: 17px;
+    }
+}

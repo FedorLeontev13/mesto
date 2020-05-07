@@ -1,0 +1,22 @@
+.popupImg__container {
+    background: transparent;
+    display: grid;
+    grid-template-columns: minmax(min-content, max-content);
+    grid-template-rows: minmax(min-content, max-content);
+    justify-content: center;
+    align-content: center;
+    padding: 0;
+    z-index: 2;
+    position: fixed;
+    width: auto;
+    height: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (max-width : 340px) {
+    .popupImg__container {
+        max-width: 240px;
+    }
+}

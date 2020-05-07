@@ -1,4 +1,4 @@
-.popup__container {
+.popupCard__container {
     position: fixed;
     width: 430px;
     height: 330px;
@@ -18,15 +18,15 @@
 
 
 @media (max-width : 550px) {
-    .popup__container {
+    .popupCard__container {
         width: 300px;
         height: 200px;
     }
 }
 
 @media (max-width : 340px) {
-    .popup__container {
+    .popupCard__container {
         width: 250px;
-        height: 250px;
+        height: 260px;
     }
 }

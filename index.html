@@ -27,48 +27,7 @@
         <button type="button" class="profile__btn-add" id="btnAdd"></button>
       </section>
       <section class="elements">
-        <div class="element">
-          <img src="./images/item1.jpg" alt="Камчатка" class="element__image">
-          <div class="element__button-wrapper">
-            <p class="element__title">Камчатка</p>
-            <button type="button" class="element__btn-like"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img src="./images/item2.jpg" alt="Москва" class="element__image">
-          <div class="element__button-wrapper">
-            <p class="element__title">Москва</p>
-            <button type="button" class="element__btn-like"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img src="./images/item3.jpg" alt="Владивосток" class="element__image">
-          <div class="element__button-wrapper">
-            <p class="element__title">Владивосток</p>
-            <button type="button" class="element__btn-like"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img src="./images/item4.jpg" alt="Тюмень" class="element__image">
-          <div class="element__button-wrapper">
-            <p class="element__title">Тюмень</p>
-            <button type="button" class="element__btn-like"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img src="./images/item5.jpg" alt="Новосибирск" class="element__image">
-          <div class="element__button-wrapper">
-            <p class="element__title">Новосибирск</p>
-            <buttont type="button" class="element__btn-like"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img src="./images/item6.jpeg" alt="Дагестан" class="element__image">
-          <div class="element__button-wrapper">
-            <p class="element__title">Дагестан</p>
-            <button type="button" class="element__btn-like"></button>
-          </div>
-        </div>
+
       </section>
     </main>
     
@@ -76,19 +35,52 @@
       <p class="footer__copyright">&copy; 2020 Mesto Russia, created by Leontev Fedor</p>
     </footer>
      
-    <div class="popup" id="popup">
-      <form class="popup__container" id="container">
-        <button type="button" class="popup__btn-close" id="btnClose"></button>
-        <p class="popup__title">Редактировать профиль</p>
-        <div class="popup__text-zone">
-          <input type="text" class="popup__text popup__text_name" id="name" placeholder="Имя">
-          <input type="text" class="popup__text popup__text_description" id="description" placeholder="Описание" >
+    <div class="popupProf">
+      <form class="popupProf__container">
+        <button type="button" class="popupProf__btn-close"></button>
+        <p class="popupProf__title">Редактировать профиль</p>
+        <div class="popupProf__text-zone">
+          <input type="text" class="popupProf__text popupProf__text_name" name="name" value="" required>
+          <input type="text" class="popupProf__text popupProf__text_description" name="description" value="" required>
         </div>
-        <button type="submit" class="popup__btn-save" id="btnSave">Сохранить</button>
+        <button type="submit" class="popupProf__btn-save" id="btnSave"></button>
       </form>
     </div>
 
+    <div class="popupCard">
+      <form class="popupCard__container">
+        <button type="button" class="popupCard__btn-close"></button>
+        <p class="popupCard__title">Новое место</p>
+        <div class="popupCard__text-zone">
+          <input type="text" class="popupCard__text popupCard__text_place" name="place" value="" required>
+          <input type="text" class="popupCard__text popupCard__text_link" name="link" value="" required>
+        </div>
+        <button type="submit" class="popupCard__btn-save"></button>
+      </form>
+    </div>
+
+    <div class="popupImg">
+      <form class="popupImg__container">
+        <button type="button" class="popupImg__btn-close"></button>
+        <img src="" alt="" class="popupImg__big-image">
+        <caption class="popupImg__caption"></caption>
+      </form>
+    </div>
+
+    <template id="card">
+      <div class="element">
+        <img src="" alt="" class="element__image" id="image">
+        <button type="button" class="element__btn-delete"></button>
+        <div class="element__button-wrapper">
+          <p class="element__title"></p>
+          <button type="button" class="element__btn-like"></button>
+        </div>
+      </div>
+    </template>
+
+    </form>
   </div>
   <script src="script.js"></script>
 </body>
 </html>  
+

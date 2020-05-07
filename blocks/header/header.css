@@ -10,21 +10,9 @@
     padding-bottom: 40px;
 }
 
-@media (max-width : 650px) {
+@media (max-width : 630px) {
     .header {
-        max-width: 540px;
-    }
-} 
-
-@media (max-width : 400px) {
-    .header {
-        margin: 28px auto 30px;
-        padding-bottom: 30px;
-    }
-}
-
-@media (max-width : 340px) {
-    .header {
+        max-width: 580px;
         margin: 28px auto 30px;
         padding-bottom: 30px;
     }

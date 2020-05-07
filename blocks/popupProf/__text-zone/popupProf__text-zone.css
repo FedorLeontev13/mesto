@@ -1,17 +1,17 @@
-.popup__text-zone {
+.popupProf__text-zone {
     margin-top: 10px;
     width: 358px;
 }
 
 @media (max-width : 550px) {
-    .popup__text-zone {
+    .popupProf__text-zone {
         margin: 0;
         width: 300px;
     }
 }
 
 @media (max-width : 340px) {
-    .popup__text-zone {
+    .popupProf__text-zone {
         margin-top: 20px;
         width: 240px;
         align-self: flex-start;

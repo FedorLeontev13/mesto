@@ -14,25 +14,7 @@
     transition: opacity .3s;
 }
 
-@media (max-width : 700px) {
-    .profile__btn-edit {
-        margin-right: auto;
-    }
-}
-
-@media (max-width : 550px) {
-    .profile__btn-edit {
-        margin-left: 0;
-    }
-}
-
-@media (max-width : 390px) {
-    .profile__btn-edit {
-        margin-right: auto;
-    }
-}
-
-@media (max-width : 340px) {
+@media (max-width : 1000px) {
     .profile__btn-edit {
         margin-right: auto;
     }

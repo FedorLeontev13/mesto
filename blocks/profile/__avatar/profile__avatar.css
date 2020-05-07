@@ -5,37 +5,7 @@
     margin-right: 30px;
 }
 
-@media (max-width : 890px) {
-    .profile__avatar {
-        margin-left: 0;
-    }
-}
-
-@media (max-width : 800px) {
-    .profile__avatar {
-        margin: 0 auto;
-    }
-}
-
-@media (max-width : 650px) {
-    .profile__avatar {
-        margin: 0 0 14px;
-    }
-}
-
-@media (max-width : 550px) {
-    .profile__avatar {
-        margin: 0 0 14px;
-    }
-}
-
-@media (max-width : 400px) {
-    .profile__avatar {
-        margin: 0 0 14px;
-    }
-}
-
-@media (max-width : 340px) {
+@media (max-width : 1000px) {
     .profile__avatar {
         margin: 0 0 14px;
     }
