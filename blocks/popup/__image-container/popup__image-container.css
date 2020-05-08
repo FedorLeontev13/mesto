@@ -1,11 +1,11 @@
-.popupImg__container {
+.popup__image-container {
+    display: flex;
+    flex-direction: column;
     background: transparent;
-    display: grid;
-    grid-template-columns: minmax(min-content, max-content);
-    grid-template-rows: minmax(min-content, max-content);
     justify-content: center;
-    align-content: center;
+    align-items: center;
     padding: 0;
+    margin: 0;
     z-index: 2;
     position: fixed;
     width: auto;
@@ -16,7 +16,7 @@
 }
 
 @media (max-width : 340px) {
-    .popupImg__container {
+    .popup__image-container {
         max-width: 240px;
     }
 }

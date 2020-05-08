@@ -1,19 +1,19 @@
-.popupProf__text-zone {
+.popup__text-zone {
     margin-top: 10px;
     width: 358px;
 }
 
 @media (max-width : 550px) {
-    .popupProf__text-zone {
+    .popup__text-zone {
         margin: 0;
-        width: 300px;
+        width: 300px; 
     }
 }
 
 @media (max-width : 340px) {
-    .popupProf__text-zone {
+    .popup__text-zone {
         margin-top: 20px;
-        width: 240px;
+        width: 240px; 
         align-self: flex-start;
     }
 }

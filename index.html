@@ -34,39 +34,39 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia, created by Leontev Fedor</p>
     </footer>
+
+    <div class="popup popup_type_edit">
+      <form class="popup__container popup__container_type_edit">
+        <button type="button" class="popup__btn-close popup__btn-close_type_edit"></button>
+        <p class="popup__title popup__title_type_edit">Редактировать профиль</p>
+        <div class="popup__text-zone popup__text-zone_type_edit">
+          <input type="text" class="popup__text popup__text_type_name" name="name" value="" placeholder="Имя" required>
+          <input type="text" class="popup__text popup__text_type_description" name="description" value="" placeholder="О себе" required>
+        </div>
+        <button type="submit" class="popup__btn-save popup__btn-save_type_edit">Сохранить</button>
+      </form>
+    </div>
      
-    <div class="popupProf">
-      <form class="popupProf__container">
-        <button type="button" class="popupProf__btn-close"></button>
-        <p class="popupProf__title">Редактировать профиль</p>
-        <div class="popupProf__text-zone">
-          <input type="text" class="popupProf__text popupProf__text_name" name="name" value="" required>
-          <input type="text" class="popupProf__text popupProf__text_description" name="description" value="" required>
+    <div class="popup popup_type_add">
+      <form class="popup__container popup__container_type_add">
+        <button type="button" class="popup__btn-close popup__btn-close_type_add"></button>
+        <p class="popup__title popup__title_type_add">Новое место</p>
+        <div class="popup__text-zone popup__text-zone_type_add">
+          <input type="text" class="popup__text popup__text_type_place" name="place" value="" placeholder="Название" required>
+          <input type="text" class="popup__text popup__text_type_link" name="link" value="" placeholder="Ссылка на картинку" required>
         </div>
-        <button type="submit" class="popupProf__btn-save" id="btnSave"></button>
+        <button type="submit" class="popup__btn-save popup__btn-save_type_add">Создать</button>
       </form>
     </div>
 
-    <div class="popupCard">
-      <form class="popupCard__container">
-        <button type="button" class="popupCard__btn-close"></button>
-        <p class="popupCard__title">Новое место</p>
-        <div class="popupCard__text-zone">
-          <input type="text" class="popupCard__text popupCard__text_place" name="place" value="" required>
-          <input type="text" class="popupCard__text popupCard__text_link" name="link" value="" required>
-        </div>
-        <button type="submit" class="popupCard__btn-save"></button>
-      </form>
+    <div class="popup popup_type_image">
+      <div class="popup__image-container">
+        <button type="button" class="popup__btn-close popup__btn-close_type_image"></button>
+        <img src="" alt="" class="popup__big-image">
+        <p class="popup__caption"></p>
+      </div>
     </div>
-
-    <div class="popupImg">
-      <form class="popupImg__container">
-        <button type="button" class="popupImg__btn-close"></button>
-        <img src="" alt="" class="popupImg__big-image">
-        <caption class="popupImg__caption"></caption>
-      </form>
-    </div>
-
+  
     <template id="card">
       <div class="element">
         <img src="" alt="" class="element__image" id="image">

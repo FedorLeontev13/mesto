@@ -1,4 +1,4 @@
-.popupProf__text {
+.popup__text {
     width: 358px;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
@@ -11,12 +11,12 @@
     box-shadow: none;
 }
 
-.popupProf__text:focus {
+.popup__text:focus {
     outline: 0;
 }
 
 @media (max-width : 550px) {
-    .popupProf__text {
+    .popup__text {
         width: 280px;
         margin-left: 15px;
         margin-bottom: 20px;
@@ -27,8 +27,8 @@
 }
 
 @media (max-width : 340px) {
-    .popupProf__text {
-        max-width: 200px;
+    .popup__text {
+        width: 200px;
         font-size: 14px;
         line-height: 17px;
     }

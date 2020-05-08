@@ -9,6 +9,7 @@
     background-color: transparent;
     border: none;
     z-index: 3;
+    cursor: pointer
 }
 
 .element__btn-delete:hover {

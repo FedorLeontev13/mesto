@@ -1,7 +1,9 @@
-.popupImg__big-image {
+.popup__big-image {
     padding-bottom: 10px;
     max-width: 75vw;
     max-height: 75vh;
     width: auto;
     height: auto;
+    margin: 0;
+    padding: 0;
 }
