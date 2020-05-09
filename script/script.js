@@ -5,16 +5,12 @@ const btnCloseProfile = document.querySelector('.popup__btn-close_type_edit') //
 const btnCloseCard = document.querySelector('.popup__btn-close_type_add') //Закрыть попап добавления карточек
 const btnCloseImg = document.querySelector('.popup__btn-close_type_image') //Закрыть попап изображения
 
-const btnSaveCard = document.querySelector('.popup__btn-save_type_add') //Сохранить карточку
-const btnSaveProfile = document.querySelector('.popup__btn-save_type_edit') // сохранить изменения профиля
-
 const popupProfile = document.querySelector('.popup_type_edit')// попап профиля
 const popupCard = document.querySelector('.popup_type_add') //попап добавления карточки
 const popupImg = document.querySelector('.popup_type_image') // попап изображения
 
 const containerCard = document.querySelector('.popup__container_type_add') // контейнер попапа добавления карточек
 const containerProfile = document.querySelector('.popup__container_type_edit') // контейнер попапа профиля
-const containerImg = document.querySelector('.popup__image-container') // контейнер изображения
 
 const nameInProfile = document.querySelector('.profile__title') //имя в профиле
 const jobInProfile = document.querySelector('.profile__subtitle') // описание в профиле
@@ -65,26 +61,30 @@ const cards = [
     }
 ];
 
+//функция открытия/закрытия попапа
+function togglePopup(popup) {
+  popup.classList.toggle('popup_opened')
+}
+
 // открыть попап профиля
 function openProfilePopup() {
   inputProfileName.value = nameInProfile.textContent
   inputProfileJob.value = jobInProfile.textContent
-
-  popupProfile.classList.add('popup_opened')
+  togglePopup(popupProfile)
 }
 
 //открыть попап добавления карточки
 function openNewCardPopup() {
   popupCleanValues()
-  popupCard.classList.add('popup_opened')
+  togglePopup(popupCard)
 }
 
-//закрытие попапа
-function closePopup() {
-  popupProfile.classList.remove('popup_opened')
-  popupCard.classList.remove('popup_opened')
-  popupImg.classList.remove('popup_opened')
-}
+// //закрытие попапа
+// function closePopup() {
+//   popupProfile.classList.remove('popup_opened')
+//   popupCard.classList.remove('popup_opened')
+//   popupImg.classList.remove('popup_opened')
+// }
 
 // функция лайка
 function switchBtnLike(evt) {
@@ -118,7 +118,7 @@ function createNewCard(item) {
   bigImage.src = item.link
   bigImage.alt = item.link
   popupCaption.textContent = item.name
-  popupImg.classList.toggle('popup_opened')
+  togglePopup(popupImg)
 
   })
 
@@ -134,7 +134,7 @@ function formAddSubmitHandler (evt) {
     link: newCardLinkInput.value 
   })
   createNewCard(cards[cards.length -1])
-  closePopup()
+  togglePopup(popupCard)
 }
 
 // функция отправки формы профиля
@@ -142,15 +142,15 @@ function formEditSubmitHandler (evt) {
   evt.preventDefault()
   nameInProfile.textContent = inputProfileName.value
   jobInProfile.textContent = inputProfileJob.value
-  closePopup()
+  togglePopup(popupProfile)
 }
 
 btnEdit.addEventListener('click', openProfilePopup)
 btnAdd.addEventListener('click', openNewCardPopup)
 
-btnCloseProfile.addEventListener('click', closePopup)
-btnCloseCard.addEventListener('click', closePopup)
-btnCloseImg.addEventListener('click', closePopup)
+btnCloseProfile.addEventListener('click', (popup) => togglePopup(popupProfile))
+btnCloseCard.addEventListener('click', (popup) => togglePopup(popupCard))
+btnCloseImg.addEventListener('click', (popup) => togglePopup(popupImg))
 
 containerProfile.addEventListener('submit', formEditSubmitHandler)
 containerCard.addEventListener('submit', formAddSubmitHandler)
