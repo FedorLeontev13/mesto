@@ -79,13 +79,6 @@ function openNewCardPopup() {
   togglePopup(popupCard)
 }
 
-// //закрытие попапа
-// function closePopup() {
-//   popupProfile.classList.remove('popup_opened')
-//   popupCard.classList.remove('popup_opened')
-//   popupImg.classList.remove('popup_opened')
-// }
-
 // функция лайка
 function switchBtnLike(evt) {
   evt.target.classList.toggle('element__btn-like_active')
@@ -118,10 +111,8 @@ function createNewCard(item) {
   bigImage.src = item.link
   bigImage.alt = item.link
   popupCaption.textContent = item.name
-  togglePopup(popupImg)
-
   })
-
+  elementImage.addEventListener('click', (popup) => togglePopup(popupImg))
   cardsContainer.prepend(cardElement);
 }
 cards.forEach(createNewCard);
