@@ -2,17 +2,27 @@
     width: 358px;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
-    margin-bottom: 30px;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 17px;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
     box-shadow: none;
+    margin-bottom: 10px;
+}
+
+.popup__text:valid {
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .popup__text:focus {
     outline: 0;
+}
+
+.popup__text:invalid {
+    margin-bottom: 0;
 }
 
 @media (max-width : 550px) {
