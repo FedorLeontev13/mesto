@@ -1,32 +1,35 @@
 // Функция отображения ошибок валидации
-const showImputError = (formElement, inputElement, errorMessage, obj) => {
-  const errorElement = formElement.querySelector('.popup__text-error')
+const showInputError = (formElement, inputElement, errorMessage, obj) => {
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`)
+  console.log(errorElement)
   inputElement.classList.add(obj.inputErrorClass)
   errorElement.textContent = errorMessage
   errorElement.classList.add(obj.errorClass)
+
 }
 
 // Функция скрытия ошибок валидации
-const hideImputError = (formElement, inputElement, obj) => {
-  const errorElement = formElement.querySelector('.popup__text-error')
+const hideInputError = (formElement, inputElement, obj) => {
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`)
   inputElement.classList.remove(obj.inputErrorClass)
   errorElement.classList.remove(obj.errorClass)
   errorElement.textContent = ''
 }
 
+
 // Функция проверяет formInput на корректность введённых данных и вызывает hideError/showError
 const checkInputValidity = (formElement, inputElement, obj) => {
   if (!inputElement.validity.valid) {
-    showImputError(formElement, inputElement, inputElement.validationMessage, obj)
+    showInputError(formElement, inputElement, inputElement.validationMessage, obj)
   } else {
-    hideImputError(formElement ,inputElement, inputElement.validationMessage, obj)
+    hideInputError(formElement ,inputElement, inputElement.validationMessage, obj)
   }
 }
 
 // Функция обходит массив полей для проверки их валидности
 const hasInvalidInput = (inputList) => {
   return inputList.some((inputElement) => {
-    return !inputElement.validity.valid;
+    return !inputElement.validity.valid
   })
 }
 
@@ -62,5 +65,3 @@ const enableValidation = (obj) => {
 
 // Вызовем функцию
 enableValidation(setObj)
-
-

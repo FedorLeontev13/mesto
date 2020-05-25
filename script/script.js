@@ -75,7 +75,7 @@ const setObj = {
   inputErrorClass: 'popup__text_type_error',
   errorClass: 'popup__text-error_active',
   inactiveButtonClass: 'popup__btn-save_disabled',
-};
+}
 
 // Функция отображения / скрытия ошибок валидации при открытии формы
 function checkImputBeforFormOpening (inputList, formElement) {
