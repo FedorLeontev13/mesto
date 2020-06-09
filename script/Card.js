@@ -1,4 +1,3 @@
-
 import { bigImage, popupCaption, popupImg, togglePopup } from './index.js'
 
 export default class Card {
@@ -15,7 +14,7 @@ export default class Card {
             .querySelector('.element')
             .cloneNode(true);
 
-        this._element = cardElement
+        this._element = cardElement;
     }
 
     // установка слушателей
@@ -28,34 +27,37 @@ export default class Card {
         });
         this._element.querySelector('.element__image').addEventListener('click', () => {
             this._openPopupImg()
-        })
-    }
+        });
+    };
 
     // приватный метод переключения лайка
     _switchBtnLike() {
-        this._element.querySelector('.element__btn-like').classList.toggle('element__btn-like_active')
-    }
+        this._element.querySelector('.element__btn-like').classList.toggle('element__btn-like_active');
+    };
 
     // приватный метод удаления карточки
     _deleteCard() {
-        this._element.querySelector('.element__btn-delete').closest('.element').remove()
-    }
+        this._element.querySelector('.element__btn-delete').closest('.element').remove();
+    };
 
     // приватный метод открытия попапа с большым изображением
     _openPopupImg() {
-        bigImage.src = this._element.querySelector('.element__image').src;
-        bigImage.alt = this._element.querySelector('.element__image').alt;
-        popupCaption.textContent = this._element.querySelector('.element__image').alt;
+        const elementImage = this._element.querySelector('.element__image');
+        bigImage.src = elementImage.src;
+        bigImage.alt = elementImage.alt;
+        popupCaption.textContent = elementImage.alt;
         togglePopup(popupImg)
-    }
+    };
 
     // публичный метод наполнение карточки данными
     generateCard() {
         this._getTemplate();
         this._setEventListeners();
-        this._element.querySelector('.element__image').src = this._link;
-        this._element.querySelector('.element__image').alt = this._name;
+        const elementImage = this._element.querySelector('.element__image');
+        elementImage.src = this._link;
+        elementImage.alt = this._name;
         this._element.querySelector('.element__title').textContent = this._name;
-        return this._element
-    }
-}
+        return this._element;
+    };
+};
+

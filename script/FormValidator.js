@@ -1,32 +1,31 @@
-
 export default class FormValidator {
-  constructor(setObj, formElement) {
-    this._obj = setObj;
+  constructor(formConfig, formElement) {
+    this._formConfig = formConfig;
     this._formElement = formElement;
   }
 
   // приватный метод отображения ошибок валидации
-  _showInputError(formElement, inputElement, errorMessage, obj) {
+  _showInputError(formElement, inputElement, errorMessage, formConfig) {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-    inputElement.classList.add(obj.inputErrorClass);
+    inputElement.classList.add(formConfig.inputErrorClass);
     errorElement.textContent = errorMessage;
-    errorElement.classList.add(obj.errorClass);
+    errorElement.classList.add(formConfig.errorClass);
   }
 
-  // приватный метод скрытия ошибок валидации
-  _hideInputError(formElement, inputElement, obj) {
+  // публичный метод скрытия ошибок валидации
+  hideInputError(formElement, inputElement, formConfig) {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-    inputElement.classList.remove(obj.inputErrorClass);
-    errorElement.classList.remove(obj.errorClass);
+    inputElement.classList.remove(formConfig.inputErrorClass);
+    errorElement.classList.remove(formConfig.errorClass);
     errorElement.textContent = '';
   }
 
   // приватный метод проверяет formInput на корректность введённых данных и вызывает hideError/showError
-  _checkInputValidity(formElement, inputElement, obj) {
+  _checkInputValidity(formElement, inputElement, formConfig) {
     if (!inputElement.validity.valid) {
-      this._showInputError(formElement, inputElement, inputElement.validationMessage, obj)
+      this._showInputError(formElement, inputElement, inputElement.validationMessage, formConfig);
     } else {
-      this._hideInputError(formElement ,inputElement, obj);
+      this.hideInputError(formElement ,inputElement, formConfig);
     }
   }
 
@@ -37,34 +36,32 @@ export default class FormValidator {
     })
   }
 
-  _toggleButtonState(inputList, buttonElement, obj) {
+  _toggleButtonState(inputList, buttonElement, formConfig) {
     if (this._hasInvalidInput(inputList)) {
-      buttonElement.classList.add(obj.inactiveButtonClass);
+      buttonElement.classList.add(formConfig.inactiveButtonClass);
     } else {
-      buttonElement.classList.remove(obj.inactiveButtonClass);
+      buttonElement.classList.remove(formConfig.inactiveButtonClass);
     }
-  }
+  };
 
   // установка слушателей
-  _setEventListeners(formElement, obj) {
-    const inputList = Array.from(formElement.querySelectorAll(obj.inputSelector));
-    const buttonElement = formElement.querySelector(obj.buttonSelector);
-    this._toggleButtonState(inputList, buttonElement, obj);
+  _setEventListeners(formElement, formConfig) {
+    const inputList = Array.from(formElement.querySelectorAll(formConfig.inputSelector));
+    const buttonElement = formElement.querySelector(formConfig.buttonSelector);
+    this._toggleButtonState(inputList, buttonElement, formConfig);
     inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
-        this._checkInputValidity(formElement, inputElement, obj);
-        this._toggleButtonState(inputList, buttonElement, obj);
-      })
-    })
+        this._checkInputValidity(formElement, inputElement, formConfig);
+        this._toggleButtonState(inputList, buttonElement, formConfig);
+      });
+    });
   }
 
   // публичный метод включения валидации формы
   enableValidation() {
-    this._setEventListeners(this._formElement, this._obj);
+    this._setEventListeners(this._formElement, this._formConfig);
   }
 }
-
-
 
 
 

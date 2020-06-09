@@ -69,7 +69,7 @@ const cards = [
 const inputListEditForm = Array.from(containerProfile.querySelectorAll('.popup__text'));
 const inputListAddForm = Array.from(containerCard.querySelectorAll('.popup__text'));
 
-const setObj = {
+const formConfig = {
   formSelector: '.popup__container',
   inputSelector: '.popup__text',
   buttonSelector: '.popup__btn-save',
@@ -78,68 +78,69 @@ const setObj = {
   inactiveButtonClass: 'popup__btn-save_disabled',
 };
 
-//Функция скрытия ошибок валидации при открытии формы
-const hideInputError = (formElement, inputElement, obj) => {
-     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-     inputElement.classList.remove(obj.inputErrorClass);
-     errorElement.classList.remove(obj.errorClass);
-     errorElement.textContent = '';
- };
- //Функция отображения / скрытия ошибок валидации при открытии формы
-function checkInputBeforeFormOpening (inputList, formElement) {
-inputList.forEach((inputElement) => {
-hideInputError(formElement, inputElement, setObj)
-   })
+// Для каждой проверяемой формы создаем экземпляр класса и вызываем метод enableValidation
+const formEditValid = new FormValidator(formConfig, containerProfile);
+formEditValid.enableValidation();
+const formAddValid = new FormValidator(formConfig, containerCard);
+formAddValid.enableValidation();
+
+// Функция подготовки к скрытию ошибок валидации при открытии формы
+function checkInputBeforeFormOpening (inputList, formElement, formValid) {
+    inputList.forEach((inputElement) => {
+        formValid.hideInputError(formElement, inputElement, formConfig);
+    });
 }
 
-//Функция обходит массив полей для проверки их валидности
-const hasInvalidInput = (inputList) => {
-return inputList.some((inputElement) => {
-     return !inputElement.validity.valid
-  })
-};
+// Функция устанавки / снятия слушатели Esc и Overlay
+function toggleEventListeners (popupElement) {
+    if (!popupElement.classList.contains('popup_opened')) {
+        document.addEventListener('click', whatFormToClose);
+        document.addEventListener('keydown', whatFormToClose);
+    } else {
+        document.removeEventListener('click', whatFormToClose);
+        document.removeEventListener('keydown', whatFormToClose);
+    }
+}
 
-const toggleButtonState = (inputList, buttonElement, obj) => {
-    if (hasInvalidInput(inputList)) {
-         buttonElement.classList.add(obj.inactiveButtonClass)
-     } else {
-         buttonElement.classList.remove(obj.inactiveButtonClass)
-     }
- };
+// Функция открытия и закрытия pop-up
+export function togglePopup(popupElement) {
+    toggleEventListeners(popupElement);
+    popupElement.classList.toggle('popup_opened');
+}
 
-//функция открытия/закрытия попапа
- export function togglePopup(popup) {
-   popup.classList.toggle('popup_opened');
-   if (popup.classList.contains('popup_opened')) {
-     document.addEventListener('keydown', (evt) => escClose(evt, popup)) || document.addEventListener('click', (evt) => closePopupOverlay(evt, popup))
-   }
-   else {document.removeEventListener('keydown', (evt) => escClose(evt, popup)) || document.removeEventListener('click', (evt) => closePopupOverlay(evt, popup))}
- }
+// Функция закрытия формы по событию (Esc и Overlay)
+function eventToClosePopup (evt, formElement) {
+    if ((evt.target.classList.contains('popup')) || (evt.key === 'Escape')) {
+        togglePopup(formElement);
+    }
+}
 
- // Закрытие попапа нажатием Esc
- function escClose(evt, popup) {
-  if (evt.keyCode == 27){
-   popup.classList.remove('popup_opened');
-  }
- }
+// Функция определения открытой формы
+function whatFormToClose (evt) {
+    const openedFormElement = document.querySelector('.popup_opened');
+    eventToClosePopup(evt, openedFormElement);
+}
 
- // Функция закрытия попап кликом на оверлей
- function closePopupOverlay (evt, formElement) {
-   if (evt.target.classList.contains('popup')) {
-     togglePopup(formElement)
-   }
- }
+// Функция отображения в форме информации из профиля
+function showInfoOfProfile () {
+    inputProfileName.value = nameInProfile.textContent;
+    inputProfileJob.value = jobInProfile.textContent;
+}
 
- // Функция устанавки / снятия слушатели Esc и Overlay
- function toggleEventListeners (popupElement) {
-   if (popupElement.classList.contains('popup_opened')) {
-     document.addEventListener('click', () => togglePopup(popupElement));
-     document.addEventListener('keydown', () => togglePopup(popupElement));
-   } else {
-     document.removeEventListener('click', () => togglePopup(popupElement));
-     document.removeEventListener('keydown', () => togglePopup(popupElement));
-   }
- }
+// Функция подготовки формы "редактирования профиля" к открытию
+function prepareEditFormToOpened(popupElement) {
+    showInfoOfProfile();
+    checkInputBeforeFormOpening(inputListEditForm, containerProfile, formEditValid);
+    btnSaveProfile.classList.remove(formConfig.inactiveButtonClass);
+    togglePopup(popupElement);
+}
+
+// Функция подготовки формы "создания карточки" к открытию
+function prepareAddFormToOpened(popupElement) {
+    containerCard.reset();
+    checkInputBeforeFormOpening(inputListAddForm, containerCard, formAddValid);
+    togglePopup(popupElement);
+}
 
 cards.forEach((item) => {
     const card = new Card(item, '#card');
@@ -147,37 +148,13 @@ cards.forEach((item) => {
     cardsContainer.prepend(cardElement);
 });
 
-const formList = Array.from(document.querySelectorAll(setObj.formSelector));
-formList.forEach((formElement) => {
-    const formValid = new FormValidator(setObj, formElement);
-    formValid.enableValidation();
-});
+function formEditSubmitHandler (evt) {
+    evt.preventDefault();
+    nameInProfile.textContent = inputProfileName.value;
+    jobInProfile.textContent = inputProfileJob.value;
+    togglePopup(popupProfile);
+}
 
- // открыть попап профиля
- function openProfilePopup() {
-  inputProfileName.value = nameInProfile.textContent;
-  inputProfileJob.value = jobInProfile.textContent;
-   checkInputBeforeFormOpening(inputListEditForm, containerProfile);
-   toggleButtonState(inputListEditForm, btnSaveProfile, setObj);
-   toggleEventListeners(popupProfile);
-   togglePopup(popupProfile);
- }
-
- function popupCleanValues() {
-    newCardNameInput.value = '';
-     newCardLinkInput.value = '';
- }
-
- //открыть попап добавления карточки
- function openNewCardPopup() {
-   popupCleanValues();
-   checkInputBeforeFormOpening(inputListAddForm, containerCard);
-   toggleButtonState(inputListAddForm, btnSaveCard, setObj);
-   toggleEventListeners(popupCard);
-   togglePopup(popupCard);
- }
-
- // Обработчик добавления новых карточек.
 function formAddSubmitHandler (evt) {
     evt.preventDefault();
     const userCard = new Card({ name: newCardNameInput.value, link: newCardLinkInput.value }, '#card');
@@ -187,16 +164,8 @@ function formAddSubmitHandler (evt) {
     containerCard.reset();
 }
 
- // функция отправки формы профиля
- function formEditSubmitHandler (evt) {
-   evt.preventDefault();
-  nameInProfile.textContent = inputProfileName.value;
-  jobInProfile.textContent = inputProfileJob.value;
-   togglePopup(popupProfile)
-}
-
-btnEdit.addEventListener('click', openProfilePopup);
-btnAdd.addEventListener('click', openNewCardPopup);
+btnEdit.addEventListener('click', () => prepareEditFormToOpened(popupProfile));
+btnAdd.addEventListener('click', () => prepareAddFormToOpened(popupCard));
 
 btnCloseProfile.addEventListener('click', () => togglePopup(popupProfile));
 btnCloseCard.addEventListener('click', () => togglePopup(popupCard));
@@ -204,3 +173,7 @@ btnCloseImg.addEventListener('click', () => togglePopup(popupImg));
 
 containerProfile.addEventListener('submit', formEditSubmitHandler);
 containerCard.addEventListener('submit', formAddSubmitHandler);
+
+
+
+
