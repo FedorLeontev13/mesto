@@ -1,5 +1,5 @@
 export default class FormValidator {
-  constructor(formConfig, formElement) {
+  constructor(formConfig,formElement) {
     this._formConfig = formConfig;
     this._formElement = formElement;
   }
@@ -13,7 +13,7 @@ export default class FormValidator {
   }
 
   // публичный метод скрытия ошибок валидации
-  hideInputError(formElement, inputElement, formConfig) {
+  _hideInputError(formElement, inputElement, formConfig) {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.remove(formConfig.inputErrorClass);
     errorElement.classList.remove(formConfig.errorClass);
@@ -25,7 +25,7 @@ export default class FormValidator {
     if (!inputElement.validity.valid) {
       this._showInputError(formElement, inputElement, inputElement.validationMessage, formConfig);
     } else {
-      this.hideInputError(formElement ,inputElement, formConfig);
+      this._hideInputError(formElement ,inputElement, formConfig);
     }
   }
 
@@ -36,13 +36,14 @@ export default class FormValidator {
     })
   }
 
+  // приватный метод принимает массив полей ввода и элемент формы, содержащий кнопку, состояние которой нужно поменять
   _toggleButtonState(inputList, buttonElement, formConfig) {
     if (this._hasInvalidInput(inputList)) {
       buttonElement.classList.add(formConfig.inactiveButtonClass);
     } else {
       buttonElement.classList.remove(formConfig.inactiveButtonClass);
     }
-  };
+  }
 
   // установка слушателей
   _setEventListeners(formElement, formConfig) {
