@@ -1,5 +1,5 @@
 export default class FormValidator {
-  constructor(formConfig,formElement) {
+  constructor(formConfig, formElement) {
     this._formConfig = formConfig;
     this._formElement = formElement;
   }
@@ -12,7 +12,7 @@ export default class FormValidator {
     errorElement.classList.add(formConfig.errorClass);
   }
 
-  // публичный метод скрытия ошибок валидации
+  // приватный метод скрытия ошибок валидации
   _hideInputError(formElement, inputElement, formConfig) {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.remove(formConfig.inputErrorClass);
@@ -40,8 +40,10 @@ export default class FormValidator {
   _toggleButtonState(inputList, buttonElement, formConfig) {
     if (this._hasInvalidInput(inputList)) {
       buttonElement.classList.add(formConfig.inactiveButtonClass);
+      buttonElement.disabled = true;
     } else {
       buttonElement.classList.remove(formConfig.inactiveButtonClass);
+      buttonElement.disabled = false;
     }
   }
 
@@ -63,6 +65,3 @@ export default class FormValidator {
     this._setEventListeners(this._formElement, this._formConfig);
   }
 }
-
-
-

@@ -9,10 +9,14 @@ const btnCloseCard = document.querySelector('.popup__btn-close_type_add'); //З�
 const btnCloseImg = document.querySelector('.popup__btn-close_type_image'); //Закрыть попап изображения
 
 const btnSaveProfile =document.querySelector('.popup__btn-save_type_edit'); // кнопкa сохранения профиля
+const btnSaveCard = document.querySelector('.popup__btn-save_type_add');
 
 const popupProfile = document.querySelector('.popup_type_edit');// попап профиля
 const popupCard = document.querySelector('.popup_type_add');//попап добавления карточки
 const popupImg = document.querySelector('.popup_type_image');// попап изображения
+
+const bigImage = document.querySelector('.popup__big-image');
+const popupCaption = document.querySelector('.popup__caption');
 
 const containerCard = document.querySelector('.popup__container_type_add');// контейнер попапа добавления карточек
 const containerProfile = document.querySelector('.popup__container_type_edit');// контейнер попапа профиля
@@ -76,6 +80,17 @@ formEditValid.enableValidation();
 const formAddValid = new FormValidator(formConfig, containerCard);
 formAddValid.enableValidation();
 
+// Функция отображения в форме информации из профиля
+function showInfoOfProfile () {
+    inputProfileName.value = nameInProfile.textContent;
+    inputProfileJob.value =jobInProfile.textContent;
+}
+
+// Функция определения открытой формы
+function whatFormToClose (evt) {
+    const openedFormElement = document.querySelector('.popup_opened'); // Находим открытую форму
+    eventToClosePopup(evt, openedFormElement);
+}
 
 // Функция устанавки / снятия слушатели Esc и Overlay
 function toggleEventListeners (popupElement) {
@@ -88,8 +103,22 @@ function toggleEventListeners (popupElement) {
     }
 }
 
+// Функция подготовки формы "редактирования профиля" к открытию
+function prepareEditFormToOpened(popupElement) {
+    showInfoOfProfile();
+    btnSaveProfile.classList.remove(formConfig.inactiveButtonClass);
+    togglePopup(popupElement);
+}
+
+// Функция подготовки формы "создания карточки" к открытию
+function prepareAddFormToOpened(popupElement) {
+    containerCard.reset();
+    btnSaveCard.classList.add(formConfig.inactiveButtonClass);
+    togglePopup(popupElement);
+}
+
 // Функция открытия и закрытия pop-up
-export function togglePopup(popupElement) {
+function togglePopup(popupElement) {
     toggleEventListeners(popupElement);
     popupElement.classList.toggle('popup_opened');
 }
@@ -101,38 +130,6 @@ function eventToClosePopup (evt, formElement) {
     }
 }
 
-// Функция определения открытой формы
-function whatFormToClose (evt) {
-    const openedFormElement = document.querySelector('.popup_opened');
-    eventToClosePopup(evt, openedFormElement);
-}
-
-// Функция отображения в форме информации из профиля
-function showInfoOfProfile () {
-    inputProfileName.value = nameInProfile.textContent;
-    inputProfileJob.value = jobInProfile.textContent;
-}
-
-// Функция подготовки формы "редактирования профиля" к открытию
-function prepareEditFormToOpened(popupElement) {
-    showInfoOfProfile();
-    btnSaveProfile.classList.remove(formConfig.inactiveButtonClass);
-    togglePopup(popupElement);
-}
-
-// Функция подготовки формы "создания карточки" к открытию
-function prepareAddFormToOpened(popupElement) {
-    containerCard.reset();
-    togglePopup(popupElement);
-}
-
-cards.forEach((item) => {
-    const card = new Card(item, '#card');
-    const cardElement = card.generateCard();
-    cardsContainer.prepend(cardElement);
-});
-
-
 function formEditSubmitHandler (evt) {
     evt.preventDefault();
     nameInProfile.textContent = inputProfileName.value;
@@ -142,10 +139,7 @@ function formEditSubmitHandler (evt) {
 
 function formAddSubmitHandler (evt) {
     evt.preventDefault();
-    const userCard = new Card({
-        name: newCardNameInput.value,
-        link: newCardLinkInput.value },
-        '#card');
+    const userCard = new Card({ name: newCardNameInput.value, link: newCardLinkInput.value }, '#card');
     const userCardElement = userCard.generateCard();
     cardsContainer.prepend(userCardElement);
     togglePopup(popupCard);
@@ -161,6 +155,22 @@ btnCloseImg.addEventListener('click', () => togglePopup(popupImg));
 
 containerProfile.addEventListener('submit', formEditSubmitHandler);
 containerCard.addEventListener('submit', formAddSubmitHandler);
+
+cards.forEach((item) => {
+    const card = new Card(item, '#card');
+    const cardElement = card.generateCard();
+    cardsContainer.prepend(cardElement);
+
+    const cardImageElement = document.querySelector('.element__image');
+    cardImageElement.addEventListener('click', function () {
+        bigImage.src = item.link;
+        bigImage.alt = item.alt;
+        popupCaption.textContent = item.name;
+        togglePopup(popupImg)
+    })
+
+});
+
 
 
 
