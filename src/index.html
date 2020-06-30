@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <title>Путешествие по России</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
-
 </head>
 <body>
   <div class="page">
@@ -35,7 +33,7 @@
       <p class="footer__copyright">&copy; 2020 Mesto Russia, created by Leontev Fedor</p>
     </footer>
 
-    <div class="popup popup_type_edit">
+    <div class="popup popup_type_edit" id="popupEdit>
       <form class="popup__container popup__container_type_edit" novalidate>
         <button type="button" class="popup__btn-close popup__btn-close_type_edit"></button>
         <p class="popup__title popup__title_type_edit">Редактировать профиль</p>
@@ -49,7 +47,7 @@
       </form>
     </div>
      
-    <div class="popup popup_type_add">
+    <div class="popup popup_type_add" id="popupAdd">
       <form class="popup__container popup__container_type_add" novalidate>
         <button type="button" class="popup__btn-close popup__btn-close_type_add"></button>
         <p class="popup__title popup__title_type_add">Новое место</p>
@@ -63,17 +61,17 @@
       </form>
     </div>
 
-    <div class="popup popup_type_image">
+    <div class="popup popup_type_image" id="bigImage">
       <div class="popup__image-container">
         <button type="button" class="popup__btn-close popup__btn-close_type_image"></button>
-        <img src="" alt="" class="popup__big-image">
+        <img class="popup__big-image">
         <p class="popup__caption"></p>
       </div>
     </div>
   
     <template id="card">
-      <div class="element">
-        <img src="" alt="" class="element__image" id="image">
+      <div class="element" id="element">
+        <img class="element__image" id="image">
         <button type="button" class="element__btn-delete"></button>
         <div class="element__button-wrapper">
           <p class="element__title"></p>
@@ -83,9 +81,6 @@
     </template>
 
   </div>
-  <script type="module" src="./script/index.js"></script>
-  <script type="module" src="./script/Card.js"></script>
-  <script type="module" src="./script/FormValidator.js"></script>
 </body>
 </html>  
 

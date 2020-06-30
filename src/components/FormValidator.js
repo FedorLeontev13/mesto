@@ -1,4 +1,4 @@
-export default class FormValidator {
+export class FormValidator {
   constructor(formConfig, formElement) {
     this._formConfig = formConfig;
     this._formElement = formElement;
@@ -12,8 +12,8 @@ export default class FormValidator {
     errorElement.classList.add(formConfig.errorClass);
   }
 
-  // приватный метод скрытия ошибок валидации
-  _hideInputError(formElement, inputElement, formConfig) {
+  // публичный метод скрытия ошибок валидации
+  hideInputError(formElement, inputElement, formConfig) {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.remove(formConfig.inputErrorClass);
     errorElement.classList.remove(formConfig.errorClass);
@@ -25,7 +25,7 @@ export default class FormValidator {
     if (!inputElement.validity.valid) {
       this._showInputError(formElement, inputElement, inputElement.validationMessage, formConfig);
     } else {
-      this._hideInputError(formElement ,inputElement, formConfig);
+      this.hideInputError(formElement ,inputElement, formConfig);
     }
   }
 
@@ -36,7 +36,6 @@ export default class FormValidator {
     })
   }
 
-  // приватный метод принимает массив полей ввода и элемент формы, содержащий кнопку, состояние которой нужно поменять
   _toggleButtonState(inputList, buttonElement, formConfig) {
     if (this._hasInvalidInput(inputList)) {
       buttonElement.classList.add(formConfig.inactiveButtonClass);
@@ -48,17 +47,17 @@ export default class FormValidator {
   }
 
   // установка слушателей
-  _setEventListeners(formElement, formConfig) {
-    const inputList = Array.from(formElement.querySelectorAll(formConfig.inputSelector));
-    const buttonElement = formElement.querySelector(formConfig.buttonSelector);
-    this._toggleButtonState(inputList, buttonElement, formConfig);
-    inputList.forEach((inputElement) => {
-      inputElement.addEventListener('input', () => {
-        this._checkInputValidity(formElement, inputElement, formConfig);
-        this._toggleButtonState(inputList, buttonElement, formConfig);
+    _setEventListeners(formElement, formConfig) {
+      const inputList = Array.from(formElement.querySelectorAll(formConfig.inputSelector));
+      const buttonElement = formElement.querySelector(formConfig.buttonSelector);
+      this._toggleButtonState(inputList, buttonElement, formConfig);
+      inputList.forEach((inputElement) => {
+        inputElement.addEventListener('input', () => {
+          this._checkInputValidity(formElement, inputElement, formConfig);
+          this._toggleButtonState(inputList, buttonElement, formConfig);
+        });
       });
-    });
-  }
+    }
 
   // публичный метод включения валидации формы
   enableValidation() {
