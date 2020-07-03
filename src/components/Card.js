@@ -1,7 +1,8 @@
-export class Card {
-    constructor({ item, cardSelector, handleCardClick }) {
-        this._link = item.link;
-        this._name = item.name;
+export default class Card {
+    constructor({data, cardSelector, handleCardClick}){
+        this._name = data.name;
+        this._alt = data.alt;
+        this._link = data.link;
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
     }
@@ -11,44 +12,41 @@ export class Card {
             .querySelector(this._cardSelector)
             .content
             .querySelector('.element')
-            .cloneNode(true);
-        this._element = cardElement;
+            .cloneNode(true)
+
+        return cardElement;
     }
 
-    // установка слушателей
-    _setEventListeners() {
-        this._element.querySelector('.element__btn-like').addEventListener('click', () => {
-            this._toggleLike();
-        });
-
-        this._element.querySelector('.element__btn-delete').addEventListener('click', () => {
-            this._delCard();
-        });
-        this._element.querySelector('.element__image').addEventListener('click', () => {
-            this._handleCardClick(this._element.querySelector('.element__image'));
-        });
-    }
-
-    // приватный метод переключения лайка
-    _toggleLike() {
+    //приватный метод like
+    _toggleLikeActive() {
         this._element.querySelector('.element__btn-like').classList.toggle('element__btn-like_active');
     }
 
-    // приватный метод удаления карточки
-    _delCard() {
+    //приватный метод delete
+    _deleteButtonHandler() {
         this._element.querySelector('.element__btn-delete').closest('.element').remove();
     }
 
-    // публичный метод наполнение карточки данными
-    generateCard() {
-        this._getTemplate();
-        this._setEventListeners();
+    //приватный метод установка слушателей
+    _setEventListeners() {
+        this._element.querySelector('.element__btn-like').addEventListener('click', () => {
+            this._toggleLikeActive()});
+        this._element.querySelector('.element__btn-delete').addEventListener('click', () => {
+            this._deleteButtonHandler()});
+        this._element.querySelector('.element__image').addEventListener('click',() => {
+            this._handleCardClick(this._element.querySelector('.element__image'))
+        });
+    }
 
-        const cardImageElement = this._element.querySelector('.element__image');
-        cardImageElement.src = this._link;
-        cardImageElement.alt = this._name;
-        this._element.querySelector('.element__title').textContent = this._name;
+    //публичный метод создание карточки
+    generateCard() {
+        this._element = this._getTemplate();
+        this._setEventListeners();
+        this._element.querySelector('.element__title').textContent =this._name;
+        const cardElementImage = this._element.querySelector('.element__image');
+        cardElementImage.src=this._link;
+        cardElementImage.alt = this._alt;
+
         return this._element;
     }
 }
-

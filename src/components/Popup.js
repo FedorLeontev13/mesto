@@ -13,21 +13,19 @@ export class Popup {
     // публичный метод добавления слушателей
     setEventListeners() {
         this._popupCloseButton = this._popupElement
-            .querySelector('.popup__container')
             .querySelector('.popup__btn-close');
-
-        this._popupCloseButton.addEventListener('click', () => this.close());
+        this._popupCloseButton.addEventListener('click', () => this.closePopup());
         document.addEventListener('keydown', (evt) => this._handleEscClose(evt));
         document.addEventListener('click', (evt) => this._handleEscClose(evt));
     }
 
     // публичный метод открытия попапа
-    open() {
+    openPopup() {
         this._popupElement.classList.add('popup_opened');
     }
 
     // публичный метод закрытия попапа
-    close() {
+    closePopup() {
         this._popupElement.classList.remove('popup_opened');
     }
 }

@@ -23,7 +23,10 @@ export const inputProfileJob = document.querySelector('.popup__text_type_descrip
 export const newCardNameInput = document.querySelector('.popup__text_type_place'); // имя карточки в попапе
 export const newCardLinkInput = document.querySelector('.popup__text_type_link'); // ссылка картинки в попапе
 
-export const cardListSection = '.card-container';
+export const inputListEditForm = Array.from(containerProfile.querySelectorAll('.popup__text'));
+export const inputListAddForm = Array.from(containerCard.querySelectorAll('.popup__text'));
+
+export const cardListSection = '.elements';
 
 export const cards = [
     {

@@ -1,20 +1,23 @@
-export class Section {
-    constructor({ data, renderer }, containerSelector) {
-        this._renderedItems = data;
+export  class Section {
+    constructor ({items, renderer}, containerSelector) {
+        this._items = items;
         this._renderer = renderer;
-
         this._container = document.querySelector(containerSelector);
     }
 
-    renderItems(data= false) {
-        if (data) {
-            data.forEach(item => this._renderer(item));
+    renderItems() {
+        this._items.forEach((item) => {
+            this._renderer(item);
+        })
+    }
+
+    //публичный метод: принимает DOM-элемент и добавляет в контейнер
+    addItem(element, initial) {
+        if (initial) {
+            this._container.append(element);
         } else {
-            this._renderedItems.forEach(item => this._renderer(item));
+            this._container.prepend(element);
         }
     }
 
-    setItem(element) {
-        this._container.prepend(element);
-    }
 }

@@ -1,91 +1,96 @@
+//импортируем стили
 import './index.css';
+
+//импортируем модули и константы
+import {FormValidator} from '../components/FormValidator.js';
+import Card from '../components/Card.js';
+import { PopupWithImage } from '../components/PopupWithImage.js';
 import {
-    btnEdit,
-    btnAdd,
-    btnSaveCard,
-    btnSaveProfile,
-    containerCard,
-    containerProfile,
+    cardListSection,
     inputProfileName,
     inputProfileJob,
-    cardListSection,
-    formConfig,
     cards,
-} from '../utils/constants.js';
-
-import { PopupWithImage } from '../components/PopupWithImage.js';
+    formConfig,
+    containerCard,
+    containerProfile,
+    btnEdit,
+    btnAdd,
+    newCardNameInput,
+    newCardLinkInput
+}  from '../utils/constants.js';
+import { Section } from '../components/Section.js'
 import { PopupWithForm } from '../components/PopupWithForm.js';
-import { Section } from '../components/Section.js';
-import { Card } from '../components/Card.js';
-import { FormValidator } from '../components/FormValidator.js';
-import { UserInfo } from '../components/UserInfo.js';
+import { UserInfo  } from '../components/UserInfo.js';
 
-// Для каждой проверяемой формы создаем экземпляр класса и вызываем метод enableValidation
-const formEditValid = new FormValidator(formConfig, containerProfile);
-formEditValid.enableValidation();
-const formAddValid = new FormValidator(formConfig, containerCard);
-formAddValid.enableValidation();
+const formLifestyleValidation = new FormValidator(formConfig, containerProfile);
+formLifestyleValidation.enableValidation();
 
-const cardsList = new Section({
-        data: cards,
+const formAddPlaceValidation = new FormValidator(formConfig,containerCard);
+formAddPlaceValidation.enableValidation();
+
+
+
+//создаем массив начальных карточек
+const cardList = new Section ({
+        items: cards,
         renderer: (item) => {
             const card = new Card({
-                item: item,
-                cardSelector: '#card',
-                handleCardClick: (cardData) => {
-                    popupImage.open(cardData);
-                }
-            });
+                data:item,
+                cardSelector:'#card',
+                handleCardClick:(popupData)=>{
+                    popupImage.openPopup(popupData);
+                }});
             const cardElement = card.generateCard();
-            cardsList.setItem(cardElement);
+            cardList.addItem(cardElement, true);
         },
     },
     cardListSection
 );
-cardsList.renderItems();
+cardList.renderItems();
 
-const newUserInfo = new UserInfo({
-    userNameSelector: '.profile__title',
-    aboutInfoSelector: '.profile__subtitle'
-});
-
-const popupEdit = new PopupWithForm({
-    formSelector: '.popup_type_edit',
-    handleFormSubmit: (formData) => {
-        newUserInfo.setUserInfo(formData);
-    }
-});
-popupEdit.setEventListeners();
-
-const popupAdd = new PopupWithForm({
-    formSelector: '.popup_type_add',
-    handleFormSubmit: (formData) => {
-        cardsList.renderItems([{ name: formData.place, link: formData.url }]);
-    }
-});
-popupAdd.setEventListeners();
-
-export const popupImage = new PopupWithImage({
-    formSelector: '.popup_type_image',
-});
+const popupImage = new PopupWithImage ('#bigImage');
 popupImage.setEventListeners();
 
-// Функция подготовки формы "редактирования профиля" к открытию
-function prepareEditFormToOpened() {
-    const formValues = newUserInfo.getUserInfo();
-    inputProfileName.value = formValues.name;
-    inputProfileJob.value = formValues.description;
-    btnSaveProfile.classList.remove(formConfig.inactiveButtonClass);
-    popupEdit.open();
-}
+//форма добавления места
+const placeFormAdd = new PopupWithForm({
+    popupSelector:'#popupAdd',
+    handleFormSubmit:()=>{
+        const userCard = new Card({
+            data:{ name: newCardNameInput.value, link: newCardLinkInput.value, alt: newCardNameInput.value},
+            cardSelector:'#card',
+            handleCardClick:(popupData)=>{
+                popupImage.openPopup(popupData);
+            }});
+        const cardElement = userCard.generateCard();
+        cardList.addItem(cardElement);
+        newCardNameInput.value = '';
+        newCardLinkInput.value = '';
+    }
+});
+placeFormAdd.setEventListeners();
 
-// Функция подготовки формы "создания карточки" к открытию
-function prepareAddFormToOpened() {
-    containerCard.reset();
-    btnSaveCard.classList.add(formConfig.inactiveButtonClass);
-    btnSaveCard.disabled = true;
-    popupAdd.open();
-}
+const userProfile = new UserInfo({
+    userNameSelector:'.profile__title',
+    userLifestyleSelector: '.profile__subtitle'});
 
-btnEdit.addEventListener('click', prepareEditFormToOpened);
-btnAdd.addEventListener('click', prepareAddFormToOpened);
+//форма редактирования профиля
+const profileFormEdit = new PopupWithForm({
+    popupSelector: '#popupEdit',
+    handleFormSubmit:(profileData) => {
+        userProfile.setUserInfo(profileData);
+    }
+});
+profileFormEdit.setEventListeners();
+
+//открытие формы "Редактировать профиль"
+btnEdit.addEventListener('click', () => {
+    const formValues  = userProfile.getUserInfo();
+    inputProfileName.value =  formValues.name;
+    inputProfileJob.value =  formValues.description;
+    profileFormEdit.openPopup()
+});
+
+//открытие формы "Новое место"
+btnAdd.addEventListener('click', () =>{
+    placeFormAdd.openPopup();
+});
