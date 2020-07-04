@@ -22,11 +22,13 @@ import { Section } from '../components/Section.js'
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo  } from '../components/UserInfo.js';
 
+const formAddPlaceValidation = new FormValidator(formConfig,containerCard);
+formAddPlaceValidation.enableValidation();
+
 const formLifestyleValidation = new FormValidator(formConfig, containerProfile);
 formLifestyleValidation.enableValidation();
 
-const formAddPlaceValidation = new FormValidator(formConfig,containerCard);
-formAddPlaceValidation.enableValidation();
+
 
 
 
@@ -51,7 +53,7 @@ cardList.renderItems();
 const popupImage = new PopupWithImage ('#bigImage');
 popupImage.setEventListeners();
 
-//форма добавления места
+//форма добавления карточки
 const placeFormAdd = new PopupWithForm({
     popupSelector:'#popupAdd',
     handleFormSubmit:()=>{
@@ -68,6 +70,7 @@ const placeFormAdd = new PopupWithForm({
     }
 });
 placeFormAdd.setEventListeners();
+
 
 const userProfile = new UserInfo({
     userNameSelector:'.profile__title',

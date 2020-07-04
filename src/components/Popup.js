@@ -18,14 +18,14 @@ export class Popup {
         document.addEventListener('keydown', (evt) => this._handleEscClose(evt));
         document.addEventListener('click', (evt) => this._handleEscClose(evt));
     }
+    
+    // публичный метод закрытия попапа
+    closePopup() {
+        this._popupElement.classList.remove('popup_opened');
+    }
 
     // публичный метод открытия попапа
     openPopup() {
         this._popupElement.classList.add('popup_opened');
-    }
-
-    // публичный метод закрытия попапа
-    closePopup() {
-        this._popupElement.classList.remove('popup_opened');
     }
 }
