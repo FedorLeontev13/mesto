@@ -16,7 +16,10 @@ import {
     btnEdit,
     btnAdd,
     newCardNameInput,
-    newCardLinkInput
+    newCardLinkInput,
+    inputListEditForm,
+    inputListAddForm,
+    btnSaveCard
 }  from '../utils/constants.js';
 import { Section } from '../components/Section.js'
 import { PopupWithForm } from '../components/PopupWithForm.js';
@@ -28,9 +31,12 @@ formAddPlaceValidation.enableValidation();
 const formLifestyleValidation = new FormValidator(formConfig, containerProfile);
 formLifestyleValidation.enableValidation();
 
-
-
-
+// Функция подготовки к скрытию ошибок валидации при открытии формы
+function checkInputBeforeFormOpening (inputList, formElement, formValid) {
+    inputList.forEach((inputElement) => {
+        formValid.hideInputError(formElement, inputElement, formConfig);
+    });
+}
 
 //создаем массив начальных карточек
 const cardList = new Section ({
@@ -43,7 +49,7 @@ const cardList = new Section ({
                     popupImage.openPopup(popupData);
                 }});
             const cardElement = card.generateCard();
-            cardList.addItem(cardElement, true);
+            cardList.addItem(cardElement);
         },
     },
     cardListSection
@@ -56,21 +62,19 @@ popupImage.setEventListeners();
 //форма добавления карточки
 const placeFormAdd = new PopupWithForm({
     popupSelector:'#popupAdd',
-    handleFormSubmit:()=>{
+    handleFormSubmit:() => {
         const userCard = new Card({
-            data:{ name: newCardNameInput.value, link: newCardLinkInput.value, alt: newCardNameInput.value},
+            data:{ name: newCardNameInput.value,
+                link: newCardLinkInput.value,
+                alt: newCardNameInput.value},
             cardSelector:'#card',
-            handleCardClick:(popupData)=>{
+            handleCardClick:(popupData) => {
                 popupImage.openPopup(popupData);
             }});
         const cardElement = userCard.generateCard();
         cardList.addItem(cardElement);
-        newCardNameInput.value = '';
-        newCardLinkInput.value = '';
     }
 });
-placeFormAdd.setEventListeners();
-
 
 const userProfile = new UserInfo({
     userNameSelector:'.profile__title',
@@ -80,20 +84,25 @@ const userProfile = new UserInfo({
 const profileFormEdit = new PopupWithForm({
     popupSelector: '#popupEdit',
     handleFormSubmit:(profileData) => {
-        userProfile.setUserInfo(profileData);
+        userProfile.setUserInfo({ name: profileData.name, hobby: profileData.description });
     }
 });
 profileFormEdit.setEventListeners();
 
 //открытие формы "Редактировать профиль"
 btnEdit.addEventListener('click', () => {
-    const formValues  = userProfile.getUserInfo();
-    inputProfileName.value =  formValues.name;
-    inputProfileJob.value =  formValues.description;
+    const [name, hobby] = userProfile.getUserInfo();
+    inputProfileName.value = name;
+    inputProfileJob.value = hobby;
+    checkInputBeforeFormOpening(inputListEditForm, containerProfile, formLifestyleValidation);
     profileFormEdit.openPopup()
 });
 
 //открытие формы "Новое место"
-btnAdd.addEventListener('click', () =>{
+btnAdd.addEventListener('click', () => {
+    containerCard.reset();
+    checkInputBeforeFormOpening(inputListAddForm, containerCard, formAddPlaceValidation);
+    btnSaveCard.classList.add(formConfig.inactiveButtonClass);
+    btnSaveCard.disabled = true;
     placeFormAdd.openPopup();
 });

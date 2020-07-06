@@ -12,12 +12,8 @@ export  class Section {
     }
 
     //публичный метод: принимает DOM-элемент и добавляет в контейнер
-    addItem(element, initial) {
-        if (initial) {
-            this._container.append(element);
-        } else {
-            this._container.prepend(element);
-        }
+    addItem(element) {
+        this._container.append(element);
     }
 
 }
