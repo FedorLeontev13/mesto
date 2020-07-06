@@ -3,12 +3,15 @@ export class Popup {
         this._popupElement = document.querySelector(formSelector);
         this._closeButton = this._popupElement.querySelector('.popup__btn-close');
 
+
         this._handleEscClose = (evt) => {
             if (evt.key === 'Escape') {
                 this.closePopup();
             }
         };
         this.setEventListeners();
+
+        this._handleEsc = this._handleEscClose.bind(this);
     }
 
     // публичный метод добавления слушателей
@@ -22,12 +25,12 @@ export class Popup {
     // публичный метод открытия попапа
     openPopup() {
         this._popupElement.classList.add('popup_opened');
-        document.addEventListener('keydown', this._handleEscClose);
+        document.addEventListener('keydown', this._handleEsc);
     }
 
     // публичный метод закрытия попапа
     closePopup() {
         this._popupElement.classList.remove('popup_opened');
-        document.removeEventListener('keydown', this._handleEscClose);
+        document.removeEventListener('keydown', this._handleEsc);
     }
 }
