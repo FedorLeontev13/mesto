@@ -3,34 +3,31 @@ export class Popup {
         this._popupElement = document.querySelector(formSelector);
         this._closeButton = this._popupElement.querySelector('.popup__btn-close');
 
-
         this._handleEscClose = (evt) => {
             if (evt.key === 'Escape') {
-                this.closePopup();
+                this.close();
             }
         };
         this.setEventListeners();
-
-        this._handleEsc = this._handleEscClose.bind(this);
     }
 
     // публичный метод добавления слушателей
     setEventListeners() {
-        this._closeButton.addEventListener('click', () => this.closePopup());
+        this._closeButton.addEventListener('click', () => this.close());
         this._popupElement.addEventListener('mousedown', (evt) =>
-            evt.target.classList.contains('popup') ? this.closePopup() : null
+            evt.target.classList.contains('popup') ? this.close() : null
         );
     }
 
     // публичный метод открытия попапа
-    openPopup() {
+    open() {
         this._popupElement.classList.add('popup_opened');
-        document.addEventListener('keydown', this._handleEsc);
+        document.addEventListener('keydown', this._handleEscClose);
     }
 
     // публичный метод закрытия попапа
-    closePopup() {
+    close() {
         this._popupElement.classList.remove('popup_opened');
-        document.removeEventListener('keydown', this._handleEsc);
+        document.removeEventListener('keydown', this._handleEscClose);
     }
 }

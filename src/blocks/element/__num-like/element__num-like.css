@@ -1,0 +1,14 @@
+.element__num-like {
+    margin: 0;
+    margin-top: 3px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    color: #000000;
+    grid-column: 2;
+    grid-row: 3;
+    justify-self: center;
+    align-self: start;
+}

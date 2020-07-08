@@ -1,16 +1,17 @@
-import { Popup } from './Popup.js';
+import { Popup } from './Popup.js'
 
-export class PopupWithImage extends Popup{
-    constructor (popupSelector) {
-        super (popupSelector);
-        this._popupElement = document.querySelector(popupSelector);
+export default class PopupWithImage extends Popup {
+    constructor(popupSelector) {
+        super(popupSelector);
+        this._image = this._popupElement.querySelector('.popup__big-image');
+        this._imageText = this._popupElement.querySelector('.popup__caption');
     }
-    //публичный метод:перезаписываем родительский метод открытия окна
-    openPopup(cardElementImage) {
-        const image =  this._popupElement.querySelector('.popup__big-image');
-        image.src = cardElementImage.src;
-        image.alt = cardElementImage.alt;
-        this._popupElement.querySelector('.popup__caption').textContent = cardElementImage.alt;
-        super.openPopup();
+
+    open(name, link) {
+        this._image.src = link;
+        this._image.alt = name;
+        this._imageText.textContent = name;
+
+        super.open();
     }
 }

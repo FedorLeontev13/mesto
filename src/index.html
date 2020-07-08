@@ -14,8 +14,12 @@
       <section class="profile">
         <div class="profile__info">
           <img src="./images/avatar1.jpg" alt="Аватар" class="profile__avatar">
+          <div class="profile__avatar-overlay">
+            <button type="button" class="profile__avatar-btn" aria-label="Редактировать аватар"></button>
+          </div>
           <div class="profile__info-text">
             <div class="profile__button-wrapper">
+
               <h3 class="profile__title" id="profileName">Колин Фарел</h3>
               <button type="button" class="profile__btn-edit" id="btnEdit"></button>
             </div>
@@ -34,13 +38,13 @@
     </footer>
 
     <div class="popup popup_type_edit" id="popupEdit">
-      <form class="popup__container popup__container_type_edit" novalidate>
+      <form class="popup__container popup__container_type_edit" method="POST" action="#" novalidate>
         <button type="button" class="popup__btn-close popup__btn-close_type_edit"></button>
         <p class="popup__title popup__title_type_edit">Редактировать профиль</p>
         <div class="popup__text-zone popup__text-zone_type_edit">
           <input type="text" class="popup__text popup__text_type_name" id="name-input" name="name" value="" placeholder="Имя" required minlength="2" maxlength="40" pattern="[А-Яа-яA-Za-z -]{1,}">
           <span class="popup__text-error" id="name-input-error"></span>
-          <input type="text" class="popup__text popup__text_type_description" id="about-input" name="description" value="" placeholder="О себе" required minlength="2" maxlength="200">
+          <input type="text" class="popup__text popup__text_type_description" id="about-input" name="about" value="" placeholder="О себе" required minlength="2" maxlength="200">
           <span class="popup__text-error" id="about-input-error"></span>
         </div>
         <button type="submit" class="popup__btn-save popup__btn-save_type_edit popup__btn-save_disabled">Сохранить</button>
@@ -48,7 +52,7 @@
     </div>
 
     <div class="popup popup_type_add" id="popupAdd">
-      <form class="popup__container popup__container_type_add" novalidate>
+      <form class="popup__container popup__container_type_add" method="POST" action="#" novalidate>
         <button type="button" class="popup__btn-close popup__btn-close_type_add"></button>
         <p class="popup__title popup__title_type_add">Новое место</p>
         <div class="popup__text-zone popup__text-zone_type_add">
@@ -58,6 +62,24 @@
           <span class="popup__text-error popup__text-error_active" id="url-input-error"></span>
         </div>
         <button type="submit" class="popup__btn-save popup__btn-save_type_add">Создать</button>
+      </form>
+    </div>
+
+    <div class="popup popup_type_del">
+      <form name="del-item" method="POST" action="#" class="popup__container popup__container_type_del" novalidate>
+        <h2 class="popup__title">Вы уверены?</h2>
+        <button type="submit" class="popup__btn-save popup__btn-save_type_del">Да</button>
+        <button type="button" class="popup__btn-close popup__btn-close_type_del" aria-label="Закрыть"></button>
+      </form>
+    </div>
+
+    <div class="popup popup_type_avatar">
+      <form name="patch-avatar" method="POST" action="#" class="popup__container popup__container_type_avatar" novalidate>
+        <h2 class="popup__title">Обновить аватар</h2>
+        <input type="text" name="url" placeholder="Ссылка на картинку" id="url-input" class="popup__text popup__text_location_center popup__text_type_avatar-url" required pattern="^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w\.-]*)*\/?$">
+        <span class="popup__text-error popup__text-error_active" id="url-input-error">Введите адрес изображения.</span>
+        <button type="submit" class="popup__btn-save popup__btn-save_type_avatar">Сохранить</button>
+        <button type="button" class="popup__btn-close popup__btn-close_type_avatar" aria-label="Закрыть"></button>
       </form>
     </div>
 
@@ -75,7 +97,10 @@
         <button type="button" class="element__btn-delete"></button>
         <div class="element__button-wrapper">
           <p class="element__title"></p>
-          <button type="button" class="element__btn-like"></button>
+          <div class="element__like-wrapper">
+            <button type="button" class="element__btn-like"></button>
+            <p class="element__num-like">0</p>
+          </div>
         </div>
       </div>
     </template>

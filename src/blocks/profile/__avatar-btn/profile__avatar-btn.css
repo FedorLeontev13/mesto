@@ -1,0 +1,13 @@
+.profile__avatar-btn {
+    padding: 0;
+    width: 26px;
+    height: 26px;
+    border-width: 0;
+    background-color: transparent;
+    background-image: url("../../../images/profile__avatar-btn.svg");
+    visibility: hidden;
+}
+
+.profile__avatar-btn:hover {
+    cursor: pointer;
+}
