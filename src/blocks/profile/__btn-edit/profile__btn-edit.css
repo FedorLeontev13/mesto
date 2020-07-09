@@ -1,17 +1,17 @@
 .profile__btn-edit {
+    padding: 0;
     width: 24px;
     height: 24px;
-    background: black;
+    border-width: 0;
+    background-color: #000000;
     background-image: url("../../../images/edit.svg");
-    border: none;
-    border-bottom: 1px solid white;
-    justify-self: flex-end;
-    cursor: pointer;
+    align-self: end;
 }
 
 .profile__btn-edit:hover {
     opacity: .5;
     transition: opacity .3s;
+    cursor: pointer;
 }
 
 @media (max-width : 1000px) {

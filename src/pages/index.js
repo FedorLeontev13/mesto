@@ -1,143 +1,217 @@
-import '../pages/index.css';
+import  PopupDeleteCard  from '../components/PopupDeleteCard.js';
+import  PopupWithImage  from '../components/PopupWithImage.js';
+import  PopupWithForm  from '../components/PopupWithForm.js';
+import  Section  from '../components/Section.js';
+import  Card  from '../components/Card.js';
+import  FormValidator  from '../components/FormValidator.js';
+import  UserInfo  from '../components/UserInfo.js';
+import  Api  from '../components/Api.js';
+import './index.css';
 
-import Card from '../components/Card.js';
-import FormValidator from '../components/FormValidator.js';
-import Section from '../components/Section.js';
-import PopupWithImage from '../components/PopupWithImage.js';
-import PopupWithForm from '../components/PopupWithForm.js';
-import PopupDeleteCard from "../components/PopupDeleteCard";
-import UserInfo from '../components/UserInfo.js';
-import Api from '../components/Api.js';
 import {
-    baseURL,
-    token,
+    btnEdit,
+    btnAdd,
+    btnSaveProfile,
+    btnSaveCard,
+    nameInProfile,
+    descriptionInProfile,
+    profileAvatar,
+    btnAvatar,
+    btnSaveAvatar,
     containerProfile,
     containerCard,
     containerAvatar,
-    btnEdit,
-    btnAdd,
     inputProfileName,
     inputProfileJob,
+    cardListSection,
+    inputListEditForm,
+    inputListAddForm,
+    inputListAvatarForm,
     formConfig,
-    btnAvatar
-} from '../utils/constants.js'
+    bigImage,
+    popupCaption,
+} from '../utils/constants.js';
 
-const api = new Api(baseURL, token);
-
-const editFormValidation = new FormValidator(formConfig, containerProfile);
-const placeFormValidation = new FormValidator(formConfig, containerCard);
-const avatarFormValidation = new FormValidator(formConfig, containerAvatar);
-
-const userInfo = new UserInfo({
-    userSelector: '.profile__title',
-    jobSelector: '.profile__subtitle',
-    avaSelector: '.profile__avatar'
+const newUserInfo = new UserInfo({
+    userNameSelector: '.profile__title',
+    aboutInfoSelector: '.profile__subtitle',
+    popupTextTypeName: inputProfileName,
+    popupTextTypeAbout: inputProfileJob,
+    profileTitle: nameInProfile,
+    profileSubtitle: descriptionInProfile,
+    profileAvatar: profileAvatar,
 });
 
-const generateCard = data => new Card(
-    data,
-    userInfo.getUserId(),
-    '#card',
-    ({name, link}) => popupImg.open(name, link),
-    (id, delConfirm) => confirmDeletePopup.open(id, delConfirm),
-    (id, liked) => api.likeCard(id, liked)
-).generateCard();
+function addCards(cards, userId) {
+    const cardsList = new Section({
+            data: cards,
+            renderer: (item, userId) => {
+                const card = new Card({
+                    item: item,
+                    cardSelector: '#card',
+                    handleCardClick: (cardData) => {
+                        popupImage.open(cardData);
+                    },
+                    handleTrashBtnClick: (cardElement, cardId) => {
+                        popupImgDelete.open(cardElement, cardId);
+                    }
+                });
+                const cardElement = card.generateCard(userId);
+                if (cards.length != 1) {
+                    cardsList.addItem(cardElement);
+                } else {
+                    cardsList.setItem(cardElement);
+                }
+            },
+            userId: userId,
+        },
+        cardListSection
+    );
+    cardsList.renderItems();
+}
 
-
-const profilePopup = new PopupWithForm(
-    '.popup_type_edit',
-    dataForm => {
-        api.updUserInfo({
-            name: dataForm.name,
-            about: dataForm.description
-        })
-            .then(res => {
-                userInfo.setUserInfo(res.name, res.about);
-                profilePopup.close();
-            })
-            .catch(err => console.log(err))
-            .finally(() => document.querySelector('.popup__btn-save').textContent = 'Сохранить');
-    },
-    editFormValidation,
-    () => {
-        const {userName, userJob} = userInfo.getUserInfo();
-        inputProfileName.value = userName;
-        inputProfileJob.value = userJob;
-        const event = new Event('input');
-        inputProfileName.dispatchEvent(event);
-        inputProfileJob.dispatchEvent(event);
-    }
-);
-
-// новое место
-const placePopup = new PopupWithForm (
-    '.popup_type_add',
-    dataForm => {
-        api.uploadCard(dataForm)
-            .then(res => {
-                cardList.prependItem(generateCard(res));
-                placePopup.close()
-            })
-            .catch(err => console.log(err))
-            .finally(() => document.querySelector('.popup__btn-save_type_add').textContent = 'Создать');
-    },
-    placeFormValidation
-);
-
-const confirmDeletePopup = new PopupDeleteCard(
-    '.popup_type_del',
-    (id, delCard) => {
-        api.deleteCard(id)
-            .then(() => {
-                delCard();
-                confirmDeletePopup.close();
-            })
-            .catch(err => console.log(err));
-    }
-);
-
-// изменить аватар
-const changeAvatarPopup = new PopupWithForm(
-    '.popup_type_avatar',
-    ({link}) => {
-        api.changeAvatar(link)
-            .then(result => {
-                userInfo.setUserAvatar(result.avatar);
-                changeAvatarPopup.close();
-            })
-            .catch(err => console.log(err))
-            .finally(() => document.querySelector('.popup__btn-save_type_avatar').textContent = 'Сохранить');
-    },
-    avatarFormValidation
-);
-let cardList;
+export const api = new Api({
+    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-12',
+    headers: '68c8587f-0e28-40be-8981-b4217700d78c',
+});
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
-    .then(([{name, about, avatar, _id}, initialCards]) => {
-        userInfo.setUserInfo(name, about);
-        userInfo.setUserAvatar(avatar);
-        userInfo.setUserId(_id);
-        cardList = new Section({
-            items: initialCards,
-            renderer: item => cardList.appendItem(generateCard(item))
-        }, '.elements');
-        cardList.renderItems();
+    .then(([userInfo, cards]) => {
+        newUserInfo.setUserInfo(userInfo);
+        addCards(cards, userInfo._id);
     })
-    .catch(err => console.log(err));
+    .catch((err) => {
+        console.log('Ошибка. Запрос не выполнен: ', err);
+    });
 
+const formEditValid = new FormValidator(
+    formConfig,
+    containerProfile,
+    inputListEditForm,
+    btnSaveProfile
+);
+formEditValid.enableValidation();
 
-const popupImg = new PopupWithImage('.popup_type_image');
+const formAddValid = new FormValidator(
+    formConfig,
+    containerCard,
+    inputListAddForm,
+    btnSaveCard
+);
+formAddValid.enableValidation();
 
-btnEdit.addEventListener('click', () => {
-    profilePopup.open();
+const formAvatarValid = new FormValidator(
+    formConfig,
+    containerAvatar,
+    inputListAvatarForm,
+    btnSaveAvatar
+);
+formAvatarValid.enableValidation();
+
+const popupEdit = new PopupWithForm({
+    formSelector: '.popup_type_edit',
+    handleFormSubmit: (formData) => {
+        popupEdit.setBtnStartLoading();
+        api.patchUserInfo(formData)
+            .then((data) => {
+                newUserInfo.setUserInfo(data);
+                popupEdit.close();
+            })
+            .catch((err) => {
+                console.log('Ошибка. Запрос не выполнен: ', err);
+            })
+            .finally(() => {
+                popupEdit.setBtnEndLoading();
+            });
+    },
+    submitButton: btnSaveProfile
 });
-btnAdd.addEventListener('click', () => {
-    placePopup.open()
-});
-btnAvatar.addEventListener('click', () => {
-    changeAvatarPopup.open()
+
+const popupAdd = new PopupWithForm({
+    formSelector: '.popup_type_add',
+    handleFormSubmit: (formData) => {
+        popupAdd.setBtnStartLoading();
+        api.postNewCard(formData)
+            .then((data) => {
+                addCards([data], data.owner._id);
+                popupAdd.close();
+            })
+            .catch((err) => {
+                console.log('Ошибка. Запрос не выполнен: ', err);
+            })
+            .finally(() => {
+                popupAdd.setBtnEndLoading();
+            });
+    },
+    submitButton: btnSaveCard
 });
 
-editFormValidation.enableValidation();
-placeFormValidation.enableValidation();
-avatarFormValidation.enableValidation();
+const popupPatchAvatar = new PopupWithForm({
+    formSelector: '.popup_type_avatar',
+    handleFormSubmit: (formData) => {
+        popupPatchAvatar.setBtnStartLoading();
+        api.patchAvatar(formData.url)
+            .then((data) => {
+                newUserInfo.setNewAvatar(data.avatar);
+                console.log('Успешно: ', data.avatar);
+                popupPatchAvatar.close();
+            })
+            .catch((err) => {
+                console.log('Ошибка. Запрос не выполнен: ', err);
+            })
+            .finally(() => {
+                popupPatchAvatar.setBtnEndLoading();
+            });
+    },
+    submitButton: btnSaveAvatar
+});
+
+export const popupImage = new PopupWithImage({
+    formSelector: '.popup_type_image',
+    popupBigImage: bigImage,
+    popupFigcaption: popupCaption,
+});
+
+export const popupImgDelete = new PopupDeleteCard({
+    formSelector: '.popup_type_del',
+    handleFormSubmit: (cardId, cardElement) => {
+        api.deleteMyCard(cardId)
+            .then((data) => {
+                console.log(data);
+                cardElement.querySelector('.element__btn-delete').closest('.element').remove();
+            })
+            .catch((err) => {
+                console.log('Ошибка. Запрос не выполнен: ', err);
+            });
+    }
+});
+
+function prepareEditFormToOpened() {
+    const formValues = newUserInfo.getUserInfo();
+    inputProfileName.value = formValues.name;
+    inputProfileJob.value = formValues.about;
+    formEditValid.clearErrors();
+    formEditValid.submitButtonState();
+    popupEdit.open();
+}
+
+function prepareAddFormToOpened() {
+    containerCard.reset();
+    formAddValid.clearErrors();
+    formAddValid.submitButtonState();
+    popupAdd.open();
+    inputListAddForm.forEach((inputElement) => {
+        inputElement.classList.remove(formConfig.inputErrorClass);
+    });
+}
+
+function preparePatchFormToOpened() {
+    containerAvatar.reset();
+    formAvatarValid.clearErrors();
+    formAvatarValid.submitButtonState();
+    popupPatchAvatar.open();
+}
+
+btnEdit.addEventListener('click', prepareEditFormToOpened);
+btnAdd.addEventListener('click', prepareAddFormToOpened);
+btnAvatar.addEventListener('click', preparePatchFormToOpened);

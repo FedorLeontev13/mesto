@@ -11,26 +11,25 @@
       <img src="images/logo.svg" alt="Логотип" class="header__logo">
     </header>
     <main class="main">
+
       <section class="profile">
-        <div class="profile__info">
+        <div class="profile__avatar-container">
           <img src="./images/avatar1.jpg" alt="Аватар" class="profile__avatar">
           <div class="profile__avatar-overlay">
             <button type="button" class="profile__avatar-btn" aria-label="Редактировать аватар"></button>
           </div>
-          <div class="profile__info-text">
-            <div class="profile__button-wrapper">
-
-              <h3 class="profile__title" id="profileName">Колин Фарел</h3>
-              <button type="button" class="profile__btn-edit" id="btnEdit"></button>
-            </div>
-            <p class="profile__subtitle" id="profileDescription">Актер, продюсер, тренер</p> 
-          </div>
+        </div>
+        <div class="profile__profile-info">
+          <h3 class="profile__title" id="profileName">Колин Фарел</h3>
+          <button type="button" class="profile__btn-edit" id="btnEdit"></button>
+          <p class="profile__subtitle" id="profileDescription">Актер, продюсер, тренер</p>
         </div>
         <button type="button" class="profile__btn-add" id="btnAdd"></button>
       </section>
-      <section class="elements">
 
+      <section class="elements">
       </section>
+
     </main>
     
     <footer class="footer">
@@ -51,7 +50,7 @@
       </form>
     </div>
 
-    <div class="popup popup_type_add" id="popupAdd">
+    <div class="popup popup_type_add" id="popupAdd" >
       <form class="popup__container popup__container_type_add" method="POST" action="#" novalidate>
         <button type="button" class="popup__btn-close popup__btn-close_type_add"></button>
         <p class="popup__title popup__title_type_add">Новое место</p>
@@ -94,14 +93,10 @@
     <template id="card">
       <div class="element" id="element">
         <img class="element__image" id="image">
+        <p class="element__title"></p>
+        <p class="element__num-like">0</p>
         <button type="button" class="element__btn-delete"></button>
-        <div class="element__button-wrapper">
-          <p class="element__title"></p>
-          <div class="element__like-wrapper">
-            <button type="button" class="element__btn-like"></button>
-            <p class="element__num-like">0</p>
-          </div>
-        </div>
+        <button type="button" class="element__btn-like"></button>
       </div>
     </template>
 

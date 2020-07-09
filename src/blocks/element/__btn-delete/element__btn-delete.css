@@ -1,15 +1,17 @@
 .element__btn-delete {
+    margin: 18px 15px 0 0;
+    padding: 0;
     width: 18px;
-    height: 20px;
-    background-image: url("../../../images/trash.svg");
-    background-size: cover;
-    position: absolute;
-    top: 18px;
-    right: 15px;  
+    height: 18px;
     background-color: transparent;
-    border: none;
-    z-index: 3;
-    cursor: pointer
+    border-width: 0;
+    background-repeat: no-repeat;
+    background-image: url("../../../images/trash.svg");
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+    justify-self: end;
+    z-index: 1;
 }
 
 .element__btn-delete:hover {

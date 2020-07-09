@@ -1,17 +1,17 @@
-import { Popup } from './Popup.js'
+import { Popup } from './Popup.js';
 
 export default class PopupWithImage extends Popup {
-    constructor(popupSelector) {
-        super(popupSelector);
-        this._image = this._popupElement.querySelector('.popup__big-image');
-        this._imageText = this._popupElement.querySelector('.popup__caption');
-    }
+	constructor({ formSelector, popupBigImage, popupFigcaption }) {
+    super(formSelector);
+    this._popupBigImage = popupBigImage;
+    this._popupFigcaption = popupFigcaption;
+  }
 
-    open(name, link) {
-        this._image.src = link;
-        this._image.alt = name;
-        this._imageText.textContent = name;
-
-        super.open();
-    }
+  // публичный метод открытия попапа
+  open(cardImageElement) {
+    super.open();
+    this._popupBigImage.src = cardImageElement.src;
+    this._popupBigImage.alt = cardImageElement.alt;
+    this._popupFigcaption.textContent = cardImageElement.alt;
+  }
 }

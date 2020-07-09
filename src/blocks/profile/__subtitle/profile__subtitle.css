@@ -1,22 +1,17 @@
 .profile__subtitle {
-    max-width: 318px;
+    grid-area: subtitle;
+    margin: 0;
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
     line-height: 22px;
     color: #FFFFFF;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
-@media (max-width : 1000px) {
+@media all and (max-width : 920px) {
     .profile__subtitle {
-        max-width: 280px;
         font-size: 14px;
         line-height: 17px;
-        text-align: center;
-        margin: auto;
+        justify-self: center;
     }
 }

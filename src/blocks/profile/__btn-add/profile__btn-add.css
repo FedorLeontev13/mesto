@@ -1,11 +1,15 @@
 .profile__btn-add {
+    padding: 0;
+    grid-area: btn-add;
     width: 150px;
     height: 50px;
-    background: black;
-    background-image: url("../../../images/add.svg");
-    border: 1px solid white;
+    background-color: #000000;
+    border: 2px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 2px;
     align-self: center;
-    justify-self: center;
+    justify-self: end;
+    background-image: url("../../../images/add.svg");
     background-position: center;
     background-repeat: no-repeat;
     cursor: pointer;

@@ -17,16 +17,6 @@ export const descriptionInProfile = document.querySelector('.profile__subtitle')
 export const profileAvatar = document.querySelector('.profile__avatar'); //аватар профиля
 export const btnAvatar = document.querySelector('.profile__avatar-btn');
 
-export const newCardNameInput = document.querySelector('.popup__text_type_place'); // имя карточки в попапе 
-export const newCardLinkInput = document.querySelector('.popup__text_type_link'); // ссылка картинки в попапе
-
-export const bigImage = document.querySelector('.popup__big-image'); // большое изображение
-export const popupCaption = document.querySelector('.popup__caption') ;// подпись большого изображения
-
-export const inputListEditForm = Array.from(containerProfile.querySelectorAll('.popup__text'));
-export const inputListAddForm = Array.from(containerCard.querySelectorAll('.popup__text'));
-export const inputListAvatarForm = Array.from(containerAvatar.querySelectorAll('.popup__text'));
-
 export const cardListSection = '.elements';
 
 export const formConfig = {
@@ -38,38 +28,12 @@ export const formConfig = {
     inactiveButtonClass: 'popup__btn-save_disabled',
 };
 
-const cards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
-        alt: 'Архыз'
-    },
-    {
-        name: 'Москва',
-        link: 'https://images.unsplash.com/photo-1581499242002-4d081930dd25?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-        alt: 'Москва'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
-        alt: 'Иваново'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
-        alt: 'Камчатка'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
-        alt: 'Холмогорский район'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
-        alt: 'Байкал'
-    }
-];
-
 export const baseURL = 'https://mesto.nomoreparties.co/v1/cohort-12';
 export const token = '68c8587f-0e28-40be-8981-b4217700d78c';
+
+export const inputListEditForm = Array.from(containerProfile.querySelectorAll('.popup__text'));
+export const inputListAddForm = Array.from(containerCard.querySelectorAll('.popup__text'));
+export const inputListAvatarForm = Array.from(containerAvatar.querySelectorAll('.popup__text'));
+
+export const bigImage = document.querySelector('.popup__big-image'); // Находим большое изображение
+export const popupCaption = document.querySelector('.popup__caption'); // Находим подпись большого изображения

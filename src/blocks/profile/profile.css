@@ -1,30 +1,36 @@
-@import url("./__info/profile__info.css");
+@import url("./__avatar/profile__avatar.css");
+@import url("./__avatar-container/profile__avatar-container.css");
 @import url("./__avatar-overlay/profile__avatar-overlay.css");
 @import url("./__avatar-btn/profile__avatar-btn.css");
-@import url("./__avatar/profile__avatar.css");
-@import url("./__info-text.css/profile__info-text.css");
+@import url("./__profile-info/profile__profile-info.css");
 @import url("./__title/profile__title.css");
+@import url("./__btn-edit/profile__btn-edit.css");
 @import url("./__subtitle/profile__subtitle.css");
 @import url("./__btn-add/profile__btn-add.css");
-@import url("./__btn-edit/profile__btn-edit.css");
-@import url("./__button-wrapper/profile__button-wrapper.css");
 
 .profile {
-    max-width: 882px;
+    margin: 40px auto 0;
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    margin: 0 auto 50px;
+    max-width: 882px;
+    display: grid;
     justify-content: space-between;
+    grid-template-columns: 120px 1fr 1fr;
+    grid-template-rows: minmax(min-content, max-content);
+    grid-column-gap: 30px;
+    grid-template-areas:
+            "avatar profile-info btn-add";
 }
 
-@media (max-width : 1000px) {
+@media all and (max-width : 920px) {
     .profile {
+        margin-top: 42px;
         max-width: 282px;
-        flex-direction: column;
-        margin: 0 auto 36px;
-        align-items: center;
-        justify-content: center;
+        grid-template-columns: 1fr;
+        grid-template-rows: 120px minmax(min-content, max-content) 50px;
+        grid-template-areas:
+                "avatar"
+                "profile-info"
+                "btn-add";
     }
 }
 

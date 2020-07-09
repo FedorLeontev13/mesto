@@ -1,32 +1,39 @@
 export default class UserInfo {
-    constructor({userSelector, jobSelector, avaSelector}) {
-        this._userName = document.querySelector(userSelector);
-        this._userJob = document.querySelector(jobSelector);
-        this._avatar = document.querySelector(avaSelector);
-    }
+	constructor({
+    userNameSelector,
+    aboutInfoSelector,
+    popupTextTypeName,
+    popupTextTypeAbout,
+    profileTitle,
+    profileSubtitle,
+    profileAvatar,
+  }) {
+    this._userNameElement = document.querySelector(userNameSelector);
+    this._aboutInfoElement = document.querySelector(aboutInfoSelector);
+    this._popupTextTypeName = popupTextTypeName;
+    this._popupTextTypeAbout = popupTextTypeAbout;
+    this._profileTitle = profileTitle;
+    this._profileSubtitle = profileSubtitle;
+    this._profileAvatar = profileAvatar;
+  }
+
+  getUserInfo() {
+    this._formValues = {};
+    this._formValues[this._popupTextTypeName.name] = this._profileTitle.textContent;
+    this._formValues[this._popupTextTypeAbout.name] = this._profileSubtitle.textContent;
+
+    return this._formValues;
+  }
+
+  setUserInfo(formData) {
+    this._userNameElement.textContent = formData.name;
+    this._aboutInfoElement.textContent = formData.about;
+    this._profileAvatar.src = formData.avatar;
+    this._profileAvatar.alt = formData.name;
+  }
 
 
-    getUserInfo() {
-        return {
-            userName: this._userName.textContent,
-            userJob: this._userJob.textContent
-        };
-    }
-
-    setUserInfo(name, about) {
-        this._userName.textContent = name;
-        this._userJob.textContent = about;
-    }
-
-    setUserAvatar(link) {
-        this._avatar.src = link;
-    }
-
-    setUserId(id) {
-        this._userId = id
-    }
-
-    getUserId() {
-        return this._userId;
-    }
+  setNewAvatar(dataAvatar) {
+    this._profileAvatar.src = dataAvatar;
+  }
 }

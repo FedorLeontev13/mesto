@@ -1,91 +1,138 @@
 export default class Api {
-    constructor(baseURL, token) {
-        this._baseURL = baseURL;
-        this._token = token;
-    }
+  constructor({ baseUrl, headers }) {
+    this._baseUrl = baseUrl;
+    this._headers = headers;
+  }
 
-    _fetchInfo(url, properties) {
-        return fetch(this._baseURL + url, properties)
-            .then(res => {
-                if(res.ok) {
-                    return res.json();
-                }
-                return Promise.reject(`Ошибка: ${res.status}`);
-            })
-    }
+  getUserInfo() {
+    return fetch(this._baseUrl + '/users/me', {
+      headers: {
+        authorization: this._headers
+      }
+    })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Что-то пошло не так: ${res.status}`);
+    });
+  }
 
-    getUserInfo() {
-        return this._fetchInfo('/users/me', {
-            headers: {
-                authorization: this._token
-            }
-        });
-    }
+  getInitialCards() {
+    return fetch(this._baseUrl + '/cards', {
+      headers: {
+        authorization: this._headers
+      }
+    })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Что-то пошло не так: ${res.status}`);
+    });
+  }
 
-    updUserInfo(dataForm) {
-        return this._fetchInfo('/users/me', {
-            method: 'PATCH',
-            headers: {
-                authorization: this._token,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(dataForm)
-        });
-    }
+  patchUserInfo(formData) {
+    return fetch(this._baseUrl + '/users/me', {
+      method: 'PATCH',
+      headers: {
+        authorization: this._headers,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        about: formData.about
+      })
+    })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Что-то пошло не так: ${res.status}`);
+    });
+  }
 
-    getInitialCards() {
-        return this._fetchInfo('/cards', {
-            headers: {
-                authorization: this._token
-            }
-        });
-    }
+  postNewCard(formData) {
+    return fetch(this._baseUrl + '/cards', {
+      method: 'POST',
+      headers: {
+        authorization: this._headers,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: formData.place,
+        link: formData.link
+      })
+    })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Что-то пошло не так: ${res.status}`);
+    });
+  }
 
-    uploadCard(dataForm) {
-        return this._fetchInfo('/cards', {
-            method: 'POST',
-            headers: {
-                authorization: this._token,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(dataForm)
-        });
-    }
+  deleteMyCard(cardId) {
+    return fetch(this._baseUrl + '/cards/' + cardId, {
+      method: 'DELETE',
+      headers: {
+        authorization: this._headers
+      }
+    })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Что-то пошло не так: ${res.status}`);
+    });
+  }
 
-    likeCard(id, liked) {
-        let method;
-        if (liked) {
-            method = 'DELETE';
-        } else {
-            method = 'PUT';
-        }
-        return this._fetchInfo('/cards/likes/' + id, {
-            method: method,
-            headers: {
-                authorization: this._token
-            }
-        });
-    }
+  putLike(cardId) {
+    return fetch(this._baseUrl + '/cards/likes/' + cardId, {
+      method: 'PUT',
+      headers: {
+        authorization: this._headers
+      }
+    })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Что-то пошло не так: ${res.status}`);
+    });
+  }
 
-    deleteCard(id) {
-        return this._fetchInfo('/cards/' + id, {
-            method: 'DELETE',
-            headers: {
-                authorization: this._token
-            }
-        });
-    }
+  delLike(cardId) {
+    return fetch(this._baseUrl + '/cards/likes/' + cardId, {
+      method: 'DELETE',
+      headers: {
+        authorization: this._headers
+      }
+    })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Что-то пошло не так: ${res.status}`);
+    });
+  }
 
-    changeAvatar(link) {
-        return this._fetchInfo('/users/me/avatar', {
-            method: 'PATCH',
-            headers: {
-                authorization: this._token,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                avatar: link
-            })
-        })
-    }
+  patchAvatar(avatarUrl) {
+    return fetch(this._baseUrl + '/users/me/avatar', {
+      method: 'PATCH',
+      headers: {
+        authorization: this._headers,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        avatar: avatarUrl,
+      })
+    })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Что-то пошло не так: ${res.status}`);
+    });
+  }
 }
